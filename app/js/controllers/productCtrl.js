@@ -133,4 +133,17 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 		$scope.loadingImage = false;
 		$scope.$apply();
 	});
+
+    /*Add category tree to Products*/
+    $scope.navStatus = Nav.status;
+    $scope.toggleNav = Nav.toggle;
+    $scope.$watch('sort', function(s) {
+        if (!s) return;
+        (s.indexOf('Price') > -1) ?
+            $scope.sorter = 'StandardPriceSchedule.PriceBreaks[0].Price' :
+            $scope.sorter = s.replace(' DESC', "");
+        $scope.direction = s.indexOf('DESC') > -1;
+    });
+    /*Add category tree to Products*/
+
 }]);
