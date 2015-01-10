@@ -23,3 +23,326 @@ http://www.typography.com/fonts/gotham/
 <link href='//cloud.typography.com/7425452/678642/css/fonts.css' media='all' rel='stylesheet' type='text/css'>
 */
 
+body {
+    font-family: 'Gotham A','Gotham B',sans-serif;
+    font-size: 14px;
+    /*line-height: 22px;*/
+    font-weight: 400;
+    color: dimgray;
+    margin: 0;
+}
+
+/*nav*/
+.navbar-fixed-top {
+    animation-duration: 0s;
+    animation-fill-mode: none;
+    animation-name: none;
+    border-width: 0 0 1px;
+    top: 0;
+}
+
+.navbar-default {
+    border-color: #fff;
+    height: 129px;
+}
+
+@media (max-width:767px) {
+    .navbar-default {
+        height: auto;
+    }
+
+}
+
+.navbar .container .navbar-nav, .navbar .container-view .navbar-nav {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav > li  {
+    padding: 0;
+    margin-left:25px;
+}
+
+@media (max-width:767px) {
+    .navbar-nav > li  {
+        margin-left:20px;
+    }
+}
+
+.navbar .nav a {
+    transition: none;
+}
+
+.navbar-nav > li > a {
+    height: 40px;
+    padding: 20px 0 22px 0;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: transparent;
+    border-bottom:4px solid #ff8a00;
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > .cart.active > a,
+.navbar-default .navbar-nav > .cart.active > a:hover,
+.navbar-default .navbar-nav > .cart.active > a:focus {
+    border-bottom:0;
+}
+
+
+.navbar .container .navbar-nav li.active .fa-caret-down, .navbar .container-view .navbar-nav li.active .fa-caret-down {
+    color:#00b2c0;
+    top:45px;
+}
+
+@media (max-width:767px) {
+    .navbar .container .navbar-nav li.active .fa-caret-down, .navbar .container-view .navbar-nav li.active .fa-caret-down {
+        display:none;
+    }
+}
+
+ul.topNav {
+    padding-top: 10px;
+    float:right;
+}
+
+@media (max-width:550px){
+    ul.topNav {
+        display:none;
+    }
+
+    /*.topNav li a img {
+    width:100%;
+    height:auto;
+    }*/
+}
+
+.topNav li {
+    float:left;
+    margin-right:4px;
+}
+
+.topNav li a img {
+    height:35px;
+    width:35px;
+}
+
+
+.main {
+    float:right;
+    position:relative;
+    top:20px;
+    right:-20px;
+}
+
+@media (max-width:1279px){
+    .main {
+        right:10px;
+    }
+}
+
+@media (max-width:767px) {
+    .main {
+        top:0;
+        float:right;
+    }
+
+    .main li {
+        float:left;
+    }
+}
+
+.main a {
+    text-transform:uppercase;
+    font-size:18px;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+.main .dropdown-menu {
+    background-color: #FFF;
+    border: 1px solid #00b2c0;
+    border-top:0;
+    float: none;
+    left:auto;
+    margin: 20px 0 0 0;
+    padding: 10px 0;
+    position: absolute;
+    top: 58px;
+    right:-5px;
+}
+
+.main .dropdown-menu li a {
+    text-transform:none;
+    font-size:16px;
+    color:#00b2c0;
+}
+
+.main .dropdown-menu > li > a:hover {
+    background-color:transparent;
+    color:#7665a0;
+}
+
+.dropdown-mega {
+    display:none;
+}
+
+/*logo*/
+.logo {
+    margin:0;
+    padding:20px 0 15px 0;
+    display: table;
+}
+
+.logo img {
+    display:block;
+}
+
+@media (max-width:979px) {
+    .logo {
+        margin:0;
+        padding:20px 0 15px 10px;
+    }
+
+    .logo img {
+        width:100%;
+        height:auto;
+    }
+}
+
+/*container*/
+.container, .container-view, .dropdown-mega .dropdown-menu  {
+    max-width: 980px;
+    margin:0 auto;
+}
+
+.container-view {
+    margin-top: 40px;
+    margin-bottom:130px;
+}
+
+@media (max-width:991px) {
+    .container-view {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.app-loading-indicator-cell {
+    background-color: transparent;
+}
+
+.app-loading-indicator-cell i {
+    color: #fff;
+}
+
+.app-loading-indicator-cell p {
+    background-color: #7665a0;
+    color: #fff;
+}
+
+.fa-search {
+    color:#00b2c0;
+}
+
+
+/*lightbox*/
+.galleryThumbs {
+    width:100%;
+    margin:0px auto;
+    position: relative;
+    text-align: center;
+}
+
+.galleryThumbs li {
+    padding: 3px 5px;
+    list-style-type: none;
+    display:inline-block;
+}
+
+.galleryThumbs li:first-child {
+    padding-left:0px;
+}
+
+.galleryThumbs .img-thumbnail {
+    border:1px solid #ccc;
+}
+
+.galleryThumbs .active .img-thumbnail {
+    border:1px solid #00b2c0;
+}
+
+.galleryImages li {
+    list-style-type:none;
+}
+
+.galleryImages a {
+    display:block;
+}
+
+.galleryImages .product-image-large {
+    display:none;
+}
+
+.galleryImages .active .product-image-large {
+    display:block !important;
+    max-height:290px;
+    max-width: 100%;
+    position:relative;
+    top:0;
+}
+/**/
+.lightbox-nav {
+    position: relative;
+    margin-bottom: 12px; /* the font-size of .btn-xs */
+    text-align: center;
+    font-size: 0; /* prevent the otherwise inherited font-size and line-height from adding extra space to the bottom of this div */
+}
+
+.lightbox-nav .btn-group {
+    vertical-align: top;
+}
+
+.lightbox-nav .close {
+    /* absolutely position this in order to center the nav buttons */
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding:1px 5px;
+}
+
+.lightbox-image-container {
+    position: relative;
+    text-align: center; /* center the image */
+}
+
+/* the caption overlays the top left corner of the image */
+.lightbox-image-caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.5em 0.9em; /* the left and right margins are offset by 0.4em for the span box-shadow */
+    color: #000;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    text-shadow: 0.1em 0.1em 0.2em rgba(255, 255, 255, 0.5);
+}
+
+.lightbox-image-caption span {
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    background-color: rgba(255, 255, 255, 0.75);
+    /* pad the left and right of each line of text */
+    box-shadow: 0.4em 0 0 rgba(255, 255, 255, 0.75),
+    -0.4em 0 0 rgba(255, 255, 255, 0.75);
+}
+

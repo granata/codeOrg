@@ -108,6 +108,57 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 			scope.lineItemErrors = newErrorList;
 		}
 
+        /*bootstrap lightbox*/
+        if (scope.LineItem.Product.StaticSpecGroups) {
+
+            if (scope.LineItem.Product.StaticSpecGroups.GalleryImages) {
+
+                scope.LineItem.images = [];
+                var count = 1;
+
+                angular.forEach (scope.LineItem.Product.StaticSpecGroups.GalleryImages.Specs, function(spec) {
+                    var image = {};
+                    image.url = spec.FileURL;
+                    image.thumbUrl = scope.LineItem.Product.StaticSpecGroups.GalleryThumbs.Specs[count].FileURL;
+                    image.Number = count;
+                    scope.LineItem.images.push(image);
+                    count++;
+                });
+            }
+        }
+
+        if (scope.LineItem.Specs && scope.LineItem.Product.StaticSpecGroups) {
+
+            if (scope.LineItem.Specs.Color) {
+
+                scope.LineItem.images = [];
+                var count = 1;
+
+                var color = scope.LineItem.Specs.Color.Value;
+                var colorLarge = color + 'Large';
+                var colorSmall = color + 'Small';
+
+                if (scope.LineItem.Product.StaticSpecGroups[colorLarge]) {
+
+                    angular.forEach (scope.LineItem.Product.StaticSpecGroups[colorLarge].Specs, function(spec) {
+                        var image = {};
+                        image.url = spec.FileURL;
+                        image.thumbUrl = scope.LineItem.Product.StaticSpecGroups[colorSmall].Specs[count].FileURL;
+                        image.Number = count;
+                        scope.LineItem.images.push(image);
+                        count++;
+                    });
+                }
+
+                scope.imageLoaded = true;
+            }
+        }
+
+        //console.dir(scope.LineItem.images);
+        //trigger the click for the first image (gives the large image)
+        scope.index = 0;
+        /*bootstrap lightbox*/
+
 		scope.specChanged = function(spec){
 			if(!spec){
 				return;

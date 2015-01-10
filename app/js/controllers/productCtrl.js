@@ -1,5 +1,5 @@
-four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User',
-function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User) {
+four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User', 'Lightbox',
+    function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User, Lightbox) {
     $scope.selected = 1;
     $scope.LineItem = {};
 	$scope.addToOrderText = "Add To Cart";
@@ -39,6 +39,19 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		if (n != o || (n == 1 && o == 1))
 			init($scope.searchTerm);
 	});
+
+        /*bootstrap lightbox*/
+        $scope.$watch('LineItem.Specs.Color.Value', function(n,o){
+            if ( n!= o) {
+                ProductDisplayService.setProductViewScope($scope);
+                Lightbox.setImages($scope.LineItem.images);
+            }
+        });
+
+        $scope.openLightboxModal = function (index) {
+            Lightbox.openModal($scope.LineItem.images, index);
+        };
+        /*bootstrap lightbox*/
 
 	$scope.searchVariants = function(searchTerm) {
 		$scope.searchTerm = searchTerm;
