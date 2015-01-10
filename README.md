@@ -1,4 +1,4 @@
-code.Org SPA 1.1.2 0115
+code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 ========
 
 ## Theme URL
@@ -46,12 +46,33 @@ code.Org SPA 1.1.2 0115
 *  remove inline style 'blue' from <a> tags
 
 ## Base App Functional Changes
+* cartCount per qty, not line item 
 
-
+* same as shipping address checkbox
 
 ## Specific File Changes
 `index.html`
-* 
+* add script for Product Lightbox / line 56
+
+`lib/angular/plugins/bootstrapLightbox.js`
+* add Product Lightbox plugin
+
+`js/app.js`
+* add {roduct Lightbox plugin dependency
+
+`js/controllers/productCtrl.js`
+* Inject Product Lightbox dependency / lines 1-2
+* Add Product Lightbox functions / lines 43-54
+
+`js/services/productDisplayService.js`
+* Add Product Lightbox functions / lines 111-160
+
+`partials/categoryView.html`
+* remove 'panel panel-default' 'panel-body' / lines 18-24
+
+`partials/controls/shortProductView.html`
+* moved {{LineItem.Product.ExternalID}} from line 17 to line 20 removed <small> and 'pull-right'
+
 
 
 

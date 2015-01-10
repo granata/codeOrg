@@ -14,11 +14,10 @@
     </div>
     <div class="col-sm-8 text-left">
         <div class="panel-body">
-            <h3>{{LineItem.Product.Name}}
-                <small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>
-            </h3>
+            <h3>{{LineItem.Product.Name}}<!-- moved {{LineItem.Product.ExternalID}} to line 20--></h3>
             <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
-            <section class="hidden-xs hidden-sm panel-body">
+            <section class="hidden-xs hidden-sm"><!--removed panel-body (spacing)-->
+                <span class="text-info">{{LineItem.Product.ExternalID}}</span><!-- removed pull-right-->
                 <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
                     {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
                     <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>

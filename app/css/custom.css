@@ -1,8 +1,8 @@
 /*
 Static file for Theme changes
 Theme name: codeOrg
-Version: 1.0 
-Template: 
+Version: 1.0
+Template:
 Created: 1/9/15
 Last Updated: 1/9/15
 Author: Jen Rasmussen, Four51
@@ -217,6 +217,13 @@ ul.topNav {
     }
 }
 
+.robynBug {
+    margin-left:20px;
+}
+.logo > a {
+    display: table-cell;
+}
+
 /*container*/
 .container, .container-view, .dropdown-mega .dropdown-menu  {
     max-width: 980px;
@@ -252,6 +259,78 @@ ul.topNav {
     color:#00b2c0;
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Gotham A','Gotham B',sans-serif;
+}
+
+h2 {
+    color: #7665a0;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+.panel-category-list h5 {
+    text-align:center;
+}
+
+/*panel-nav*/
+.panel-nav ul,
+.panel-nav .panel-category-list:not(.no-panels) > ul,
+.panel-nav .panel-product-list:not(.no-panels) > ul,
+.panel-nav .panel-lineitem > ul,
+.panel-nav .panel-order-history > ul,
+.panel-nav .panel-order-shipping-multiple > ul {
+    border:none;
+}
+.panel-nav ul li {
+    border-top: 0;
+}
+
+.panel-nav ul li  a {
+    color:#999c9f;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.panel-nav ul li a:hover {
+    text-decoration:underline;
+}
+
+.panel-nav ul li.active,
+.panel-nav ul li.active a,
+.panel-nav ul li.focus,
+.panel-nav ul li.focus a {
+    background-color: #fff;
+    color:#ff8a00;
+    text-decoration:none;
+    border:none;
+}
+
+.panel-nav ul li ul li a {
+    background-color: #fff;
+    color:#999c9f;
+    text-decoration:none;
+    border:none;
+    margin-left:10px;
+}
+
+.panel-nav ul li.active ul li a {
+    color:#999c9f;
+}
+
+.panel-nav ul li ul li.active a {
+    color: #ff8a00;
+}
+
+/*.panel-nav ul li ul li {
+    border-bottom: 1px solid #00b2c0;
+    border-top: none;
+    position:relative;
+    top:5px;
+    left:25px;
+    padding:5px;
+}*/
 
 /*lightbox*/
 .galleryThumbs {

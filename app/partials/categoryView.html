@@ -14,27 +14,27 @@
             </li>
         </ul>
     </nav>
-    <aside class="col-sm-3 col-collapse visible-md visible-lg" ng-if="navStatus.visible">
-        <div class="panel panel-default panel-nav">
+    <aside class="col-sm-2 col-collapse visible-md visible-lg" ng-if="navStatus.visible">
+        <!--<div class="panel panel-default panel-nav">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     {{'Category List' | r | xlat}}
                 </h3>
-            </div>
-            <nav class="nav 451qa_sidenav panel-body">
-                <ul>
-                    <categorytree tree='tree' current='currentCategory' />
-                </ul>
+            </div>-->
+            <!--<nav class="nav 451qa_sidenav panel-body">-->
+            <div class="panel-nav">
+            <nav class="nav 451qa_sidenav">
+                <categorytree tree='tree' current='currentCategory' />
             </nav>
         </div>
     </aside>
-    <div class="col-collapse" ng-class="{ 'col-md-8 col-md-offset-1': navStatus.visible }" >
+    <div class="col-collapse" ng-class="{ 'col-md-9 col-md-offset-1': navStatus.visible }" >
 
         <categorylistview></categorylistview>
 
 		<loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
 
-        <productlistview></productlistview>
+        <productlistview ng-show="!currentCategory.SubCategories.length"></productlistview>
 
     </div>
 </section>
