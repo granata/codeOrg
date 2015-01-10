@@ -1,100 +1,180 @@
 <header class="header navbar navbar-inner">
-    <nav tolerance='20' offset='200' class="navbar navbar-default navbar-fixed-top" role="navigation" headroom>
+    <nav class="navbar navbar-default" role="navigation">
+        <!--<nav tolerance='20' offset='200' class="navbar navbar-default navbar-fixed-top" role="navigation" headroom>-->
         <section>
             <div class="container">
-                <ul class="nav navbar-nav pull-left">
-                    <li class="back animated fadeInLeft" ng-class="{'ng-hide': isActive('catalog')}">
-                        <a href back-step class="back">
-                            <i class="fa fa-arrow-left"></i>
+                <div class="col-xs-5 pull-left">
+                    <div class="logo hidden-xs hidden-sm">
+                        <a title="Home" href="http://www.code.org">
+                            <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/logo.png" />
                         </a>
-                    </li>
-                    <li class="products" ng-class="{'active': isInPath('catalog') || isInPath('product') || isInPath('cart/default') || isInPath('search')}">
-                        <a id="451qa_home_link" ng-show="Four51User.isAuthenticated()" href="catalog">
-                            <i class="fa fa-home"></i>
-                            <span class="hidden-xs">{{'Products' | rc | xlat}}</span>
+                        <a title="ROBYN" target="_blank" href="http://www.robynpromo.com">
+                            <img class="robynBug" ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
                         </a>
-                    </li>
-                    <li class="order" ng-class="{'active': isActive('order'), 'active-xs': isActive('favoriteorders')}">
-                        <a id="451qa_order_link" href="order">
-                            <i class="fa fa-clipboard"></i>
-                            <span class="hidden-xs">{{'Orders' | r | xlat}}</span>
+                    </div>
+                    <div class="logo hidden-md hidden-lg">
+                        <a title="Home" href="http://www.code.org">
+                            <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/logo.png" />
                         </a>
-                    </li>
-                    <li class="report" ng-if="user.Permissions.contains('AdvancedReporting')" ng-class="{'active': isActive('reports')}">
-                        <a id="451qa_order_link" href="reports">
-                            <i class="fa fa-bar-chart-o"></i>
-                            <span class="hidden-xs">{{'Reports' | r | xlat}}</span>
+                        <a title="ROBYN" target="_blank" href="http://www.robynpromo.com">
+                            <img class="robynBug" ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
                         </a>
-                    </li>
-                    <li ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
-                        <a id="451qa_acct_link" href="admin" class="hidden-md hidden-lg">
-                            <i class="fa fa-cog"></i>
-                            <span class="hidden-xs">{{'Account' | r | xlat}}</span>
-                        </a>
-                    </li>
-                    <li class="dropdown admin-user visible-md visible-lg" ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
-                        <a id="451qa_acct_link2" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-cog"></i>
-                            <span class="hidden-xs">{{'Account' | r | xlat}}</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li id="451qa_user_link" ng-show="user.Permissions.contains('ViewSelfAdmin')" class="admin">
-                                <a href="admin">
-                                    {{'User Information' | r | xlat}}
-                                </a>
-                            </li>
-                            <li id="451qa_addy_link" ng-show="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')" class="addresses">
-                                <a href="addresses">
-                                    {{'Addresses' | r | xlat}}
-                                </a>
-                            </li>
-                            <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewMessaging')" class="messages">
-                                <a href="message">
-                                    {{'Messages' | r | xlat}}
-                                </a>
-                            </li>
-                            <li class="favorites hidden-xs">
-                                <a id="451qa_fave_link" href="favoriteorders">
-                                    {{'Favorites' | r | xlat}}
-                                </a>
-                            </li>
-                            <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
-                                <a href="contactus">
-                                    {{'Contact Us' | r | xlat}}
+                    </div>
+                </div>
+                <div class="col-xs-7 pull-right">
+                    <div class="row">
+                        <ul class="topNav">
+                            <li>
+                                <a title="Facebook" target="_blank" href="//facebook.com/Code.org">
+                                    <img class="img-responsive" src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/facebook_purple.png">
                                 </a>
                             </li>
                             <li>
-                                <a href="#" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="neworder" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
-                                    {{"Start" | r | xlat}} {{"New" | r | xlat}} {{"Order" | r | xlat}}
+                                <a title="Twitter" target="_blank" href="//twitter.com/codeorg">
+                                    <img class="img-responsive" src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/twitter_purple.png">
                                 </a>
                             </li>
-                            <li class="divider"></li>
-                            <li ng-show="user.Type!='TempCustomer'" class="logout">
-                                <a href="#"  class="451_btn_logout" ng-click="Logout()">
-                                    <i class="fa fa-power-off text-danger"></i>
-                                    <span>{{'Log Out' | r | xlat}}</span>
+                            <li>
+                                <a title="Tumblr" target="_blank" href="//codeorg.tumblr.com/">
+                                    <img class="img-responsive" src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/tumblr_purple.png">
                                 </a>
                             </li>
-                            <li ng-if="AppConst.debug">
-                                <a href="#" ng-click="Clear()">
-                                    <i class="fa fa-archive"></i>
-                                    <span class="text-nav">Clear Cache</span>
+                            <li>
+                                <a title="Code.org Store" href="catalog">
+                                    <img class="img-responsive" src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/zazzle_purple.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Donate" target="_blank" href="http://www.code.org/donate">
+                                    <img class="img-responsive" src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/donate_normal.png">
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
-                        <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
-                            <span ng-bind="cartCount" class="badge"></span>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                    </div><!--.row-->
+                    <div class="row">
+                        <ul class="nav navbar-nav main">
+                            <!--<li class="back animated fadeInLeft" ng-class="{'ng-hide': isActive('catalog')}">
+                                <a href back-step class="back">
+                                    <i class="fa fa-arrow-left"></i>
+                                </a>
+                            </li>-->
+                            <li class="products" ng-class="{'active': isInPath('catalog') || isInPath('product') || isInPath('cart/default') || isInPath('search')}">
+                                <a id="451qa_home_link" ng-show="Four51User.isAuthenticated()" href="catalog">
+                                    <i class="fa fa-home hidden-sm hidden-md hidden-lg"></i>
+                                    <span class="hidden-xs">{{'Products' | rc}}</span>
+                                </a>
+                            </li>
+                            <!--<li class="order" ng-class="{'active': isActive('order'), 'active-xs': isActive('favoriteorders')}">
+                                <a id="451qa_order_link" href="order">
+                                    <i class="fa fa-clipboard hidden-md hidden-lg"></i>
+                                    <span class="hidden-xs">{{'Orders' | r}}</span>
+                                </a>
+                            </li>-->
+                            <li  class="contactus" ng-show="user.Permissions.contains('ViewContactUs')" ng-class="{'active': isActive('contactus')}">
+                                <a id="451qa_mesg_link" href="contactus">
+                                    <i class="fa fa-envelope-o hidden-sm hidden-md hidden-lg"></i>
+                                    <span class="hidden-xs">{{'Contact Us' | r}}</span>
+                                </a>
+                            </li>
+                            <li class="report" ng-if="AppConst.debug" ng-class="{'active': isActive('reports')}">
+                                <a id="451qa_order_link" href="reports">
+                                    <i class="fa fa-bar-chart-o hidden-sm hidden-md hidden-lg"></i>
+                                    <span class="hidden-xs">{{'Reports' | r}}</span>
+                                </a>
+                            </li>
+                            <li ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
+                                <a id="451qa_acct_link" href="admin" class="visible-xs hidden-sm hidden-md hidden-lg">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                            </li>
+                            <!--<li ng-show="user.Type == 'TempCustomer'" class="admin-user hidden-xs" ng-class="{'active': isActive(['admin'])}">
+                                <a href="admin">
+                                    <span>{{'Account' | r}}</span>
+                                </a>
+                            </li>-->
+                            <li class="dropdown admin-user visible-sm visible-md visible-lg" ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
+                                <a id="451qa_acct_link2" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span>{{'Account' | r}}</span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li ng-show="user.Type=='TempCustomer'">
+                                        <a class="admin" href="admin">
+                                            <i class="fa fa-sign-in text-info"></i>
+                                            <span>{{'Log In' | r}}</span>
+                                        </a>
+                                    </li>
+                                    <li ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewSelfAdmin')"
+                                        id="451qa_user_link" class="admin">
+                                        <a href="admin">
+                                            {{'My Account' | r}}
+                                        </a>
+                                    </li>
+                                    <!--Permissions are set to create billing and shipping address so leaving this out so hides when Temp Customer works correctly --
+                                    <li id="451qa_addy_link" class="addresses" ng-show="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')">
+                                    -->
+                                    <li id="451qa_addy_link" class="addresses" ng-show="user.Type!='TempCustomer'">
+                                        <a href="addresses">
+                                            {{'Addresses' | r}}
+                                        </a>
+                                    </li>
+                                    <li id="451qa_mesg_link" ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewMessaging')" class="messages">
+                                        <a href="message">
+                                            {{'Messages' | r}}
+                                        </a>
+                                    </li>
+                                    <li class="order" ng-show="user.Type!='TempCustomer'">
+                                        <a id="451qa_order_link" href="order">
+                                            <i class="fa fa-clipboard hidden-md hidden-lg"></i>
+                                            <span class="hidden-xs">{{'Order History' | r}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="order" ng-if="user.Permissions.contains('AdvancedReporting')" ng-show="user.Type!='TempCustomer'">
+                                        <a id="451qa_order_link" href="reports">
+                                            <i class="fa fa-clipboard hidden-md hidden-lg"></i>
+                                            <span class="hidden-xs">{{'Reports' | r}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="favorites hidden-xs" ng-show="user.Type!='TempCustomer'">
+                                        <a id="451qa_fave_link" href="favoriteorders">
+                                            {{'Favorites' | r}}
+                                        </a>
+                                    </li>
+                                    <!--<li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
+                                        <a href="contactus">
+                                            {{'Contact Us' | r}}
+                                        </a>
+                                    </li>-->
+                                    <li class="divider"></li>
+                                    <li ng-show="user.Type!='TempCustomer'" class="logout">
+                                        <a href="#"  class="451_btn_logout" ng-click="Logout()">
+                                            <i class="fa fa-sign-out text-info"></i>
+                                            <span>{{'Log Out' | r}}</span>
+                                        </a>
+                                    </li>
+                                    <li ng-if="AppConst.debug">
+                                        <a href="#" ng-click="Clear()">
+                                            <i class="fa fa-archive"></i>
+                                            <span class="text-nav">Clear Cache</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="cart" ng-show="currentOrder.totalQty && user.CurrentOrderID"
+                                ng-class="{'active': isActive(['cart', 'checkout'])}">
+                                <!--<a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
+                                    <span ng-bind="cartCount" class="badge"></span>-->
+                                <a id="451qa_cart_link" class="cart" href="cart">
+                                    <span class="badge hidden-xs" ng-bind="currentOrder.totalQty"></span>
+                                    <!--<span class="badge hidden-xs">{{currentOrder.totalCartQty}}</span>-->
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!--.row-->
+                </div><!--.col-xs-12-->
+            </div><!--.container-->
         </section>
     </nav>
     <nav class="dropdown-mega">

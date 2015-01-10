@@ -1,10 +1,31 @@
-<nav class="nav visible-sm visible-xs">
+<!--update classes for userType-->
+<!--<nav class="nav visible-sm visible-xs">-->
+<nav ng-class="{'nav visible-sm visible-xs': !user.Type!='TempCustomer', 'nav hidden-xs hidden-sm': user.Type=='TempCustomer'}">
+<!--update classes for userType-->
     <span class="btn-group">
-        <button class="btn btn-default" ng-show="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')" ng-class="{'active': isActive('addresses')}" redirect="/addresses">{{'Addresses' | r}}</button>
-        <button class="btn btn-default" ng-show="user.Permissions.contains('ViewMessaging')" ng-class="{'active': isActive('message')}" redirect="/message">{{'Messages' | r}}</button>
-        <button class="btn btn-default" id="451qa_fave_link" redirect="/favoriteorders">{{'Favorites' | r}}</button>
-        <button class="btn btn-default" ng-show="user.Permissions.contains('ViewContactUs')" ng-class="{'active': isActive('contactus')}" redirect="/contactus">{{'Contact Us' | r}}</button>
+        <!--add admin-->
+        <button class="btn btn-default" ng-class="{'active': isActive('admin')}" redirect="/admin">{{'User Information' | r}}</button>
+        <!--add admin-->
+        <button class="btn btn-default" ng-show="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')"
+                ng-class="{'active': isActive('addresses')}" redirect="/addresses">{{'Addresses' | r}}</button>
+        <button class="btn btn-default" ng-show="user.Permissions.contains('ViewMessaging')" ng-class="{'active': isActive('message')}"
+                redirect="/message">{{'Messages' | r}}</button>
+        <!--add order / reports -->
+        <button class="btn btn-default" ng-class="{'active': isActive('order')}" redirect="/order">{{'Order History' | r}}</button>
+		<button class="btn btn-default" ng-class="{'active': isActive('reports')}" redirect="/reports">{{'Reports' | r}}</button>
+        <!--add order / reports -->
+        <!--add active class to favorites -->
+        <button class="btn btn-default" id="451qa_fave_link" ng-class="{'active': isActive('favoriteorders')}"
+                redirect="/favoriteorders">{{'Favorites' | r}}</button>
+		<button class="btn btn-default" id="451qa_fave_link" redirect="/favoriteorders">{{'Favorites' | r}}</button>
+		<!--add active class to favorites -->
+        <!--hide contact us -->
+        <!--<button class="btn btn-default" ng-show="user.Permissions.contains('ViewContactUs')" ng-class="{'active': isActive('contactus')}"
+                redirect="/contactus">{{'Contact Us' | r}}</button>-->
+        <!--hide contact us -->
         <button ng-if="AppConst.debug" href="#" class="btn btn-default" ng-click="Clear()">Clear Cache</button>
-        <button class="btn btn-danger pull-right 451_btn_logout" ng-click="Logout()" ng-if="user.Type=='Customer'"><i class="fa fa-power-off"></i> {{'Log Out' | r}}</button>
+        <button class="btn btn-danger pull-right 451_btn_logout" ng-click="Logout()" ng-if="user.Type=='Customer'">
+            <i class="fa fa-power-off"></i> {{'Log Out' | r}}
+        </button>
     </span>
 </nav>

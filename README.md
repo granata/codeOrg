@@ -47,12 +47,14 @@ code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 
 ## Base App Functional Changes
 * cartCount per qty, not line item 
-
 * same as shipping address checkbox
+* guest checkout
+
 
 ## Specific File Changes
 `index.html`
 * add script for Product Lightbox / line 56
+* comment out branding section
 
 `lib/angular/plugins/bootstrapLightbox.js`
 * add Product Lightbox plugin
@@ -73,7 +75,12 @@ code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 `partials/controls/shortProductView.html`
 * moved {{LineItem.Product.ExternalID}} from line 17 to line 20 removed <small> and 'pull-right'
 
+`js/controllers/navCtrl.js`
+* cartCount per qty, not line item / lines 51-62
 
-
-
+`partials/controls/acountNav.html`
+* add admin, orders, reports
+* hide contact us
+* add conditional userType class
+* add favorites active class
 
