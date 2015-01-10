@@ -9,6 +9,10 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 
 	function _extend(order) {
 		order.isEditable = order.Status == 'Unsubmitted' || order.Status == 'Open' || order.Status == 'AwaitingApproval';
+
+       /*SPA-13222 add for double line item cart image fix*/
+        var images = {};
+
 		angular.forEach(order.LineItems, function(item) {
 			item.OriginalQuantity = item.Quantity; //needed to validate qty changes compared to available quantity
 			angular.forEach(item.Specs, function(spec) {
@@ -16,6 +20,19 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 					spec.File.Url += "&auth=" + Security.auth();
 			});
 			item.SpecsLength = Object.keys(item.Specs).length;
+
+            /*SPA-13222 add for double line item cart image fix*/
+            if (!images[item.Product.ExternalID]) {
+                images[item.Product.ExternalID] = {};
+                images[item.Product.ExternalID].LargeImageUrl = item.Product.LargeImageUrl;
+                images[item.Product.ExternalID].SmallImageUrl = item.Product.SmallImageUrl;
+            }
+            else {
+                item.Product.LargeImageUrl = images[item.Product.ExternalID].LargeImageUrl;
+                item.Product.SmallImageUrl = images[item.Product.ExternalID].SmallImageUrl;
+            }
+
+
 		});
 
 		order.forceMultipleShip = function(value) {

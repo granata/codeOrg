@@ -1,1 +1,120 @@
-/*do not make changes to this file. It will be overwritten by the css editor. Put theme changes in custom.css*/
+/*navbar*/
+.navbar-default  {background-color: #00b2c0;}
+/*navbar*/
+
+body  {background-color: #FFF; /*#F0F0F0;*/}
+body  {color: #696969;}
+
+body a  {font-weight:bold;}
+
+.text-info {color:#00b2c0;}
+.text-success { color:#00b2c0;}
+
+.btn .btn-custom, .btn-custom, .btn.btn-custom {
+    background-color: #ffa400;
+    color:#FFF;
+    text-transform:capitalize;
+    align-items: flex-start;
+    border:none;
+    border:1px solid rgb(255, 164, 0);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight:bold;
+    height: 35px;
+    letter-spacing: normal;
+    line-height: 20px;
+    margin: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-image: none;
+    border-image: none 100% 100% 100% 100% / / 0 0 0 0;
+}
+a {color:#7665a0; text-decoration:none; font-weight:bold;}
+a:hover, a:focus { color:dimgray; text-decoration:underline; }
+
+.panel-lineitem  h3.text-primary {color:#7665a0;}
+.panel-lineitem  a:hover, a:focus {color:#7665a0; text-decoration:underline; }
+.btn-primary  {background-color: #9183b3;}
+.btn-primary, .btn-primary:hover  {color: #FFF;}
+.btn-primary  {border-color: #9183b3;}
+.btn-primary:hover  {color:#FFF;}
+.btn-primary:hover  {background-color: #7665a0;}
+.btn-primary:hover  {border-color: #7665a0;}
+
+.btn-success  {background-color: #32c1cc;}
+.btn-success, .btn-success:hover  {color: #FFF;}
+.btn-success  {border-color: #32c1cc;}
+.btn-success:hover  {color:#FFF;}
+.btn-success:hover  {background-color: #00b2c0;}
+.btn-success:hover  {border-color: #00b2c0;}
+
+.btn-warning  {background-color: #ffa400;}
+.btn-warning, .btn-warning:hover  {color: #FFF;}
+.btn-warning  {border-color:  #ffa400;}
+.btn-warning:hover  {color:#FFF;}
+.btn-warning:hover  {background-color: #ff8000;}
+.btn-warning:hover  {border-color: #ff8000;}
+
+
+.btn-default  {background-color: #FFFFFF;}
+.btn-default, .btn-default:hover  {color: #333333;}
+.btn-default  {border-color: #CCCCCC;}
+.btn-default:hover  {background-color: #EBEBEB;}
+
+.btn-info  {background-color: #5BC0DE;}
+.btn-info, .btn-info:hover  {color: #FFF;}
+.btn-info  {border-color: #4cb1cf;}
+.btn-info:hover  {background-color: #47acca;}
+
+.btn-danger  {background-color: #D9534F;}
+.btn-danger, .btn-danger:hover  {color: #FFFFFF;}
+.btn-danger  {border-color: #D43F3A;}
+.btn-danger:hover  {background-color: #D2322D;}
+
+.jumbotron  {background-color: #FFFFFF;}
+h2 .jumbotron  {color: #333333;}
+
+.panel  {border-radius: 4px 4px 0px 0px;} /*top-left, top-right, bottom-right, bottom-left*/
+.panel .panel-heading { border-top: none; }
+.panel .panel-heading .panel-title {
+    font-size: 16px;
+    letter-spacing: 0em;
+    padding: 25px 15px;
+    text-align: center;
+    color:#FFF;
+    font-weight:bold;
+    text-transform:capitalize;
+}
+
+.panel-default .panel-heading, .panel-search .panel-heading {background-color: #FFF; border-radius: 4px 4px 0px 0px;}
+.panel-default .panel-heading .panel-title, .panel-search .panel-heading .panel-title  {color: #00b2c0;}
+.panel-primary .panel-heading {background-color: #7665a0; border-radius: 4px 4px 0px 0px;}
+.panel-primary .panel-heading .panel-title  {color: #FFF;}
+
+.panel-footer  {background-color: #F5F5F5;}
+
+.panel-category-list .well  {background-color: #FFFFFF;}
+.panel-category-list .well h5  {color: #333333;}
+.panel-category-list .well  {border-color: #F0F0F0;}
+
+.panel-product-list .well  {background-color: #FFFFFF;}
+.panel-product-list .well  {color: #333333;}
+.panel-product-list .well  {border-color: #F0F0F0;}
+
+/*new from store.code.org 12/5/14*/
+.panel-lineitem .col-sm-9 {border-left: none;}
+.panel-lineitem.ng-scope {border-top: none !important;border-bottom:1px solid #ddd !important;}
+.panel-lineitem a:hover {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out 0s;
+}
+.panel-lineitem h3 {
+    font-size: 18px !important;
+}
+.panel-lineitem a p {font-weight:normal;font-size:10px;margin-left:24px;color:#999;}

@@ -59,7 +59,8 @@ four51.app.filter('xlat', ['XLATService', function(XLATService) {
 
 four51.app.filter('culturecurrency', ['XLATService', function(XLATService) {
     return function(value) {
-        if (value) {
+        /*SPA-14109*/
+        if (value) {if  (value || value == 0) {
             /**
              * Number.prototype.format(n, x, s, c)
              *
