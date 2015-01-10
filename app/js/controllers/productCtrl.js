@@ -1,5 +1,5 @@
-four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User', 'Lightbox',
-    function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User, Lightbox) {
+four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Category', 'Nav', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User', 'Lightbox',
+    function ($scope, $routeParams, $route, $location, $451, Category, Nav, Product, ProductDisplayService, Order, Variant, User, Lightbox) {
     $scope.selected = 1;
     $scope.LineItem = {};
 	$scope.addToOrderText = "Add To Cart";
