@@ -43,13 +43,13 @@ body {
 }
 
 /*nav*/
-li.cart a i:first-of-type {
+/*li.cart a i:first-of-type {
     border-radius: 50%;
     border: 1px solid #fff;
     text-align: center;
     padding: 10px;
     margin-top: -10px;
-}
+}*/
 
 .badge {
     background-color:#ff8a00;

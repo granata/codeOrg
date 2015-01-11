@@ -4,6 +4,7 @@
             <h3 class="panel-title">{{'Orders' | r | xlat}}</h3>
         </div>
         <div class="panel-body">
+            <accountnavigation />
             <p class="alert alert-warning">{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</p>
         </div>
         <div class="panel-footer">
@@ -16,6 +17,7 @@
                 <h3 class="panel-title">{{('Standard' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
             </div>
             <div class="panel-body">
+                <accountnavigation />
                 <ul>
                     <li ng-repeat="criteria in OrderSearchCriteria | filter:{Type:'Standard'}" ng-show="criteria.Count">
                         <a ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} <span class="badge">{{criteria.Count}}</span></a>
