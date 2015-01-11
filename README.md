@@ -1,11 +1,11 @@
-code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
+## code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 ========
 
-## Theme URL
+### Theme URL
 * //www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg
-* social icon images in top nav live there in /custom/images
+* logo(s) and social icon images in top nav live there in /custom/images
 
-## Base App Bug/Enhancement Changes
+### Base App Bug/Enhancement Changes
 `js/services/orderService.js`
 * SPA-13222: add fix for double line item cart images / lines 13-14 & lines 20-29 
 
@@ -45,13 +45,15 @@ code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 `partials/Security/security-EN-US.html`
 *  remove inline style 'blue' from <a> tags
 
-## Base App Functional Changes
+### Base App Functional Changes
 * cartCount per qty, not line item 
+
+### Additional Functionality
+* Product Lightbox
 * same as shipping address checkbox
 * guest checkout
 
-
-## Specific File Changes
+### Specific File Changes
 `index.html`
 * add script for Product Lightbox / line 56
 * comment out branding section
@@ -60,7 +62,7 @@ code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 * add Product Lightbox plugin
 
 `js/app.js`
-* add {roduct Lightbox plugin dependency
+* add Product Lightbox plugin dependency
 
 `js/controllers/productCtrl.js`
 * Inject Product Lightbox dependency / lines 1-2
