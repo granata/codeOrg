@@ -32,7 +32,7 @@
 
         <categorylistview></categorylistview>
 
-		<loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
+		<loadingindicator ng-show="productLoadingIndicator && !currentCategory.SubCategories.length" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
 
         <productlistview ng-show="!currentCategory.SubCategories.length"></productlistview>
 

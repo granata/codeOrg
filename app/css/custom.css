@@ -242,6 +242,10 @@ ul.topNav {
     }
 }
 
+.user-view, .order-search-view, .address-list-view, .favorites-list-view, .message-view, .contact, .checkout-view  {
+    margin-top:20px;
+}
+
 .app-loading-indicator-cell {
     background-color: transparent;
 }
@@ -331,6 +335,18 @@ h2 {
     left:25px;
     padding:5px;
 }*/
+
+/*products*/
+h4.text-primary span.subtotal {
+    font-weight:bold;
+    padding-right:15px;
+}
+
+/*product detail template*/
+.product-detail-default .btn-lg {
+    min-height:50px;
+}
+
 
 /*lightbox*/
 .galleryThumbs {

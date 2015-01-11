@@ -71,6 +71,8 @@ code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
 
 `partials/categoryView.html`
 * remove 'panel panel-default' 'panel-body' / lines 18-24
+* add ng-show && to loadingindicator
+* add ng-show to productlistview
 
 `partials/controls/shortProductView.html`
 * moved {{LineItem.Product.ExternalID}} from line 17 to line 20 removed <small> and 'pull-right'
