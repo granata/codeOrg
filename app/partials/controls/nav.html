@@ -1,33 +1,27 @@
+<nav class="top-header col-xs-12 visible-xs text-center">
+    <a title="ROBYN" target="_blank" href="http://www.robynpromo.com">
+        <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
+    </a>
+</nav>
 <header class="header navbar navbar-inner">
+
     <nav class="navbar navbar-default" role="navigation">
         <!--<nav tolerance='20' offset='200' class="navbar navbar-default navbar-fixed-top" role="navigation" headroom>-->
         <section>
             <div class="container">
                 <div class="col-xs-5 pull-left">
-                     <div class="logo hidden-xs hidden-sm">
-                         <a title="Home" href="http://www.code.org">
-                             <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/logo.png" />
-                         </a>
-                         <a title="ROBYN" target="_blank" href="http://www.robynpromo.com">
-                             <img class="robynBug" ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
-                         </a>
-                     </div>
-                     <div class="logo hidden-md hidden-lg">
-                         <a title="Home" href="http://www.code.org">
-                             <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/logo.png" />
-                         </a>
-                         <a title="ROBYN" target="_blank" href="http://www.robynpromo.com">
-                             <img class="robynBug" ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
-                         </a>
-                     </div>
-                            <!--<div class="col-xs-5 pull-left">
+                    <ul class="logoNav">
+                        <li class="logo">
                             <a title="Home" href="http://www.code.org">
-                                <img class="logo" ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/logo.png" />
+                                <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/logo.png" />
                             </a>
+                        </li>
+                        <li class="robynBug hidden-xs">
                             <a title="ROBYN" target="_blank" href="http://www.robynpromo.com">
-                                <img class="robynBug" ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
+                                <img ng-src="//www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg/images/custom/robyn.png" />
                             </a>
-                            </div>-->
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-xs-7 pull-right">
                     <div class="row">
@@ -173,9 +167,9 @@
                                 <!--<a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
                                     <span ng-bind="cartCount" class="badge"></span>-->
                                 <a id="451qa_cart_link" class="cart" href="cart">
-                                    <span class="badge hidden-xs" ng-bind="currentOrder.totalQty"></span>
-                                    <!--<span class="badge hidden-xs">{{currentOrder.totalCartQty}}</span>-->
-                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="badge" ng-bind="currentOrder.totalQty"></span>
+                                    <!--<span class="badge">{{currentOrder.totalCartQty}}</span>-->
+                                    <i class="fa fa-shopping-cart hidden-xs"></i>
                                     <i class="fa fa-caret-down"></i>
                                 </a>
                             </li>

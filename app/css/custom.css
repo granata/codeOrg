@@ -43,17 +43,28 @@ body {
 }
 
 /*nav*/
-/*li.cart a i:first-of-type {
-    border-radius: 50%;
+li.cart a i.fa-shopping-cart {
     border: 1px solid #fff;
-    text-align: center;
-    padding: 10px;
+    border-radius: 50%;
     margin-top: -10px;
-}*/
+    padding: 10px;
+    text-align: center;
+}
 
 .badge {
     background-color:#ff8a00;
 }
+
+@media (max-width:767px) {
+    li.cart a .badge {
+        border: 1px solid #fff;
+        border-radius: 20%;
+        margin-top: -10px;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
 
 .navbar-fixed-top {
     animation-duration: 0s;
@@ -169,22 +180,47 @@ ul.topNav {
 }
 
 /*logo*/
-.logo {
+ul.logoNav {
     margin:0;
     padding:20px 0 15px 0;
-    display: table;
 }
 
-.logo img {
-    display:block;
+ul.logoNav li {
+    float:left;
+    display:inline-block;
 }
 
-.robynBug {
-    margin-left:20px;
+ul.logoNav li img {
+    max-width: 100%;
+    max-height: 100%;
 }
-.logo > a {
-    display: table-cell;
+
+.robynBug  {
+    margin:60px 0 0 20px;
 }
+
+@media (max-width:899px) {
+    .top-header {
+        min-height:30px;
+        padding:10px 0;
+        z-index:1040;
+    }
+
+    .navbar-nav > li {
+        margin: 0;
+    }
+
+    .navbar-nav > li > a {
+        /*height: 40px;
+        padding: 20px 0 22px;*/
+    }
+
+    .main {
+        right: 0;
+        top: 0;
+    }
+}
+
 
 /*container*/
 .container, .container-view, .dropdown-mega .dropdown-menu  {
@@ -398,14 +434,14 @@ h4.text-primary span.subtotal {
 
 
 /*responsive*/
-@media (max-width:767px) {
+@media (max-width:899px) {
     .container-view {
         margin-bottom: 20px;
         margin-top: 20px;
     }
 }
 
-@media (max-width:767px) {
+@media (max-width:899px) {
     .navbar-default {
         height: auto;
     }
@@ -419,7 +455,7 @@ h4.text-primary span.subtotal {
     }
 }
 
-@media (max-width:767px){
+@media (max-width:899px){
     ul.topNav {
         display:none;
     }
@@ -430,21 +466,8 @@ h4.text-primary span.subtotal {
     }*/
 }
 
-@media (max-width:767px) {
-    .logo {
-        margin:0;
-        padding:20px 0 15px 10px;
-    }
 
-    .logo img {
-        width:100%;
-        height:auto;
-    }
-}
-
-
-
-@media (max-width:767px){
+@media (max-width:899px){
     .main {
         right:10px;
     }
