@@ -12,12 +12,12 @@
                 redirect="/message">{{'Messages' | r}}</button>
         <!--add order / reports -->
         <button class="btn btn-default" ng-class="{'active': isActive('order')}" redirect="/order">{{'Order History' | r}}</button>
-		<button class="btn btn-default" ng-class="{'active': isActive('reports')}" redirect="/reports">{{'Reports' | r}}</button>
+		<button class="btn btn-default" ng-class="{'active': isActive('reports')}" ng-if="user.Permissions.contains('AdvancedReporting')" redirect="/reports">{{'Reports' | r}}</button>
         <!--add order / reports -->
         <!--add active class to favorites -->
         <button class="btn btn-default" id="451qa_fave_link" ng-class="{'active': isActive('favoriteorders')}"
                 redirect="/favoriteorders">{{'Favorites' | r}}</button>
-		<button class="btn btn-default" id="451qa_fave_link" redirect="/favoriteorders">{{'Favorites' | r}}</button>
+		<!--<button class="btn btn-default" id="451qa_fave_link" redirect="/favoriteorders">{{'Favorites' | r}}</button>-->
 		<!--add active class to favorites -->
         <!--hide contact us -->
         <!--<button class="btn btn-default" ng-show="user.Permissions.contains('ViewContactUs')" ng-class="{'active': isActive('contactus')}"
