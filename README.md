@@ -73,8 +73,8 @@
 
 `partials/categoryView.html`
 * remove 'panel panel-default' 'panel-body' / lines 18-24
-* add ng-show && to loadingindicator
-* add ng-show to productlistview
+* add ng-show && to loadingindicator (only show subcategories and not products on main categories)
+* add ng-show to productlistview (only show subcategories and not products on main categories)
 
 `partials/controls/shortProductView.html`
 * moved {{LineItem.Product.ExternalID}} from line 17 to line 20 removed <small> and 'pull-right'
