@@ -107,8 +107,16 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 		Order.save($scope.currentOrder,
 			function(data) {
 				$scope.currentOrder = data;
-				$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
-				$scope.displayLoadingIndicator = false;
+				/*$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');*/
+                /*custom*/
+                if($scope.user.Type == 'TempCustomer') {
+                    $location.path('admin');
+                }
+                else {
+                    $location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
+                }
+                /*custom*/
+                $scope.displayLoadingIndicator = false;
 			},
 			function(ex) {
 				$scope.errorMessage = ex.Message;
@@ -124,6 +132,20 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 			newTotal += item.LineTotal;
 		});
 		$scope.currentOrder.Subtotal = newTotal;
+
+        /*cart Qty Count*/
+        var newQty = 0;
+        if (!$scope.currentOrder) return newQty;
+        angular.forEach($scope.currentOrder.LineItems, function(item){
+            if(item.Quantity != 0){
+                newQty += +(item.Quantity);
+            }
+
+        });
+        $scope.currentOrder.totalQty = newQty;
+        /*cart Qty Count*/
+
+
 	}, true);
 
 	$scope.copyAddressToAll = function() {

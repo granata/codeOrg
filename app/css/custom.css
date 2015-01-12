@@ -24,7 +24,8 @@ http://www.typography.com/fonts/gotham/
 */
 
 body {
-    font-family: 'Gotham A','Gotham B',sans-serif;
+    /*font-family: 'Gotham A','Gotham B',sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     /*line-height: 22px;*/
     font-weight: 400;
@@ -255,7 +256,8 @@ ul.logoNav li img {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Gotham A','Gotham B',sans-serif;
+    /*font-family: 'Gotham A','Gotham B',sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
 }
 
 h2 {
@@ -336,6 +338,20 @@ h4.text-primary span.subtotal {
 /*product detail template*/
 .product-detail-default .btn-lg {
     min-height:50px;
+}
+
+/*checkout*/
+.addressName {
+    display:none;
+}
+
+/*contactus*/
+.contact span {
+    margin-left:25px;
+}
+
+.contact a {
+    text-decoration:none;
 }
 
 

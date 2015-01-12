@@ -1,0 +1,101 @@
+<div class="panel panel-default panel-order">
+    <div class="panel-heading" ng-class="{'no': cart_shipping.$invalid, 'yes': !cart_shipping.$invalid, 'open': checkOutSection == 'shipping' }"
+         ng-click="showSuccessAlert = false">
+        <h3 ng-click="checkOutSection = 'shipping'" class="panel-title panel-primary">
+            <i class="pull-left" ng-class="{'fa fa-warning': cart_shipping.$invalid, 'fa fa-check-circle': !cart_shipping.$invalid }"></i>
+            {{'Shipping' | r | xlat}}
+            <!--<i class="pull-right" ng-class="{'fa fa-caret-up': checkOutSection == 'shipping', 'fa fa-caret-down': checkOutSection == 'billing' }"></i>-->
+            <i class="pull-right" ng-class="{'fa fa-caret-up': currentOrder.checkOutSection == 'shipping', 'fa fa-caret-down': currentOrder.checkOutSection != 'shipping' }"></i>
+        </h3>
+    </div>
+    <div class="panel-body collapse" collapse="checkOutSection != 'shipping'">
+        <!--<div class="panel-body" ng-show="currentOrder.checkOutSection == 'options'">-->
+        <div>
+            <shippingmessage />
+        </div>
+        <div ng-show="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
+            <addressinputguest address='shipaddress' user='user'></addressinput>
+        </div>
+        <div ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
+            <form name="cart_shipping" novalidate="">
+                <div>
+                    <div>
+                        <span class="btn-group">
+                            <button ng-show="user.Permissions.contains('ShipToMultipleAddresses') && currentOrder.LineItems.length > 1" class="btn btn-default" ng-click="setSingleShipAddress()">
+                                <i ng-class="{'fa fa-check': !currentOrder.IsMultipleShip() }"></i>
+                                {{'Single ' + ('Address' | r) | xlat}}
+                            </button>
+                            <button ng-show="user.Permissions.contains('ShipToMultipleAddresses') && currentOrder.LineItems.length > 1" class="btn btn-default" type="button" ng-click="setMultipleShipAddress()">
+                                <i ng-class="{'fa fa-check': currentOrder.IsMultipleShip() }"></i>
+                                {{'Multiple ' + ('Addresses' | r) | xlat}}
+                            </button>
+                             <button class="btn btn-info pull-right" type="button"
+                                     ng-hide="(shipaddressform || (!shipaddressform && !shipaddresses) || !user.Permissions.contains('CreateShipToAddress'))" ng-click="shipaddressform = true" tabindex="-1">
+                                 {{'New ' + ('Address' | r) | xlat}}
+                             </button>
+                        </span>
+                    </div>
+                    <div>
+                        <loadingindicator ng-show="shippingUpdatingIndicator" title="{{'Please wait while ' + ('Shipping' | rc) + ' costs are updated' | r | xlat}}" />
+                        <loadingindicator ng-show="shippingFetchIndicator" title="{{'Please wait while available shippers are updated' | r | xlat}}" />
+                        <div>
+                            <div ng-show="!currentOrder.IsMultipleShip()" class="view-form-icon">
+                                <div ng-show="!currentOrder.IsMultipleShip()" class="view-form-icon">
+                                    <div ng-show="shipaddresses" ng-class="{'view-form-select': !currentOrder.ShipAddressID, '': currentOrder.ShipAddressID }">
+                                        <label ng-class="{required: !currentOrder.IsMultipleShip()}" ng-show="currentOrder.ShipAddressID || !currentOrder.IsMultipleShip()">{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}</label>
+                                        <select class="form-control" name="shippingAddress"
+                                                ng-change="setShipAddressAtOrderLevel()"
+                                                ng-options="address.ID as address.AddressName for address in shipaddresses"
+                                                ng-model="currentOrder.ShipAddressID"
+                                                ng-required="!currentOrder.IsMultipleShip()">
+                                            <option value=""></option>
+                                        </select>
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                    <div ng-show="user.ShipMethod != null && shippers" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
+                                        <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
+                                        <select name="shipMethod" class="form-control" ng-change="updateShipper()"
+                                                ng-model="currentOrder.LineItems[0].ShipperName"
+                                                ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown' && user.Groups[0].Name != 'Affiliates'"
+                                                ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | culturecurrency)) for shipper in shippers | filter: { Name: '!' + 'USPS Standard Post&reg;'}"
+                                                ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null">
+                                            <option value=""></option>
+                                        </select>
+                                        <select name="shipMethod" class="form-control" ng-change="updateShipper()"
+                                                ng-model="currentOrder.LineItems[0].ShipperName"
+                                                ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown' && user.Groups[0].Name == 'Affiliates'"
+                                                ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | culturecurrency)) for shipper in shippers | filter:{Name: 'UPS Ground'}"
+                                                ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
+                                            <option value=""></option>
+                                        </select>
+                                        <i class="fa fa-truck"></i>
+                                    </div>
+                                </div>
+                                <div class="order-location" ng-show="!currentOrder.IsMultipleShip() && orderShipAddress.ID">
+                                    <p><strong><small>{{('Shipping' | r) + ' ' + ('Location' | r) | xlat}}</small></strong></p>
+                                    <!--<p ng-show="orderShipAddress.AddressName"><small>{{orderShipAddress.AddressName}}</small></p>-->
+                                    <p ng-show="orderShipAddress.CompanyName"><small>{{orderShipAddress.CompanyName}}</small></p>
+                                    <p ng-show="(orderShipAddress.FirstName || orderShipAddress.LastName) && (!user.Permissions.contains('EditShipToName') && !orderShipAddress.IsCustEditable)">
+                                        <small>{{orderShipAddress.FirstName + ' ' + orderShipAddress.LastName}}</small>
+                                    </p>
+                                    <p ng-show="orderShipAddress.Street1"><small>{{orderShipAddress.Street1}}</small></p>
+                                    <p ng-show="orderShipAddress.Street2"><small>{{orderShipAddress.Street2}}</small></p>
+                                    <p ng-show="orderShipAddress.City || orderShipAddress.State || order.ShipAddress.Zip">
+                                        <small>{{orderShipAddress.City}}<span ng-if="orderShipAddress.City && currentOrderShipAddress.State">, </span> {{orderShipAddress.State}} {{orderShipAddress.Zip}}</small>
+                                    </p>
+                                    <p ng-show="orderShipAddress.Phone"><small>{{orderShipAddress.Phone}}</small></p>
+                                </div>
+                                <div class="view-form-icon" ng-show="!currentOrder.IsMultipleShip() && user.ShipMethod.AskForAccountNumber">
+                                    <div>
+                                        <label ng-show="currentOrder.LineItems[0].ShipAccount">{{('Shipping' | r) + ' ' + ('Account' | r) | xlat}}: </label>
+                                        <input class="form-control" placeholder="{{'Shipping' | r | xlat}} Account Number" type="text" ng-model="currentOrder.LineItems[0].ShipAccount" autocomplete="off" />
+                                        <i class="fa fa-book"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

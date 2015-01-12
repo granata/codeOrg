@@ -1,9 +1,13 @@
-## code.Org SPA 1.1.2 0115 - Last Updated: 1/10/15
+## code.Org SPA 1.1.2 0115 - Last Updated: 1/12/15
 ========
 
 ### Theme URL
 * //www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/codeOrg
 * logo(s) and social icon images in top nav live there in /custom/images
+
+### Custom Font 
+* http://www.google.com/fonts#UsePlace:use/Collection:Montserrat (Gotham alternative)
+* Source: http://trishah.com/free-alternative-to-gotham-font/
 
 ### Base App Bug/Enhancement Changes
 `js/services/orderService.js`
@@ -58,9 +62,6 @@
 * add script for Product Lightbox / line 56
 * comment out branding section
 
-`lib/angular/plugins/bootstrapLightbox.js`
-* add Product Lightbox plugin
-
 `js/app.js`
 * add Product Lightbox plugin dependency
 
@@ -82,9 +83,35 @@
 `js/controllers/navCtrl.js`
 * cartCount per qty, not line item / lines 51-62
 
+`js/controllers/checkOutViewCtrl.js`
+* cartCount per qty, not line item / lines 45-63
+
 `partials/controls/acountNav.html`
 * add admin, orders, reports
 * hide contact us
 * add conditional userType class
 * add favorites active class
+
+### Specific File Additions
+`lib/angular/plugins/bootstrapLightbox.js`
+* add Product Lightbox plugin
+
+`js/directives/addressinputguest.js`
+* Guest Checkout Address Input
+
+`js/directives/ordershippingguest.js`
+* Guest Checkout Order Shipping directive
+
+`js/directives/orderbillingguest.js`
+* Guest Checkout Order Billing directive
+
+`partials/controls/addressInputGuest.html`
+* Guest Checkout Address Input html
+
+`partials/controls/orderShippingGuest.html`
+* Guest Checkout Order Shipping html
+
+`partials/controls/orderBillingGuest.html`
+* Guest Checkout Order Billing html
+
 

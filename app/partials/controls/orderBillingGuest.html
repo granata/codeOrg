@@ -1,0 +1,75 @@
+<div class="panel panel-default panel-order billSection">
+    <div class="panel-heading" ng-class="{'no': cart_billing.$invalid, 'yes': !cart_billing.$invalid, 'open': checkOutSection == 'billing' }">
+        <!--<div class="panel-heading" ng-disabled="cart_shipping.$invalid" ng-class='yes'>-->
+        <h3 ng-click="checkOutSection = 'billing'" class="panel-title">
+            <i class="pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
+            {{'Billing' | r | xlat}}
+            <i class="pull-right" ng-class="{'fa fa-caret-up': currentOrder.checkOutSection == 'billing', 'fa fa-caret-down': currentOrder.checkOutSection != 'billing' }"></i>
+        </h3>
+    </div>
+    <div class="panel-body collapse" collapse="checkOutSection != 'billing'">
+        <!--<div class="panel-body" ng-show="currentOrder.checkOutSection == 'options'">-->
+        <!--<div>
+            <billingmessage />
+        </div>-->
+        <!--custom-->
+        <div class="row" ng-hide="billaddressform">
+            <div class="checkbox">
+                <label>
+                    <input name="sameAsShipping" type="checkbox" ng-model="currentOrder.copyShipAddress" ng-change="resetBilling()"
+                           ng-disabled="!currentOrder.ShipAddressID" />
+                    {{'Same as Shipping Address' | r | xlat}}
+                </label>
+            </div>
+        </div>
+        <div ng-show="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+            <addressinputguest address='billaddress' user='user'></addressinputguest>
+        </div>
+        <!--<div ng-hide="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">-->
+        <div ng-hide="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+            <form name="cart_billing" novalidate="">
+                <div>
+                    <!--<div ng-show="currentOrder.BillAddressID" ng-repeat="field in currentOrder.OrderFields">-->
+                    <div ng-repeat="field in currentOrder.OrderFields">
+                        <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
+                        <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
+                    </div>
+                    <br /><br />
+                    <paymentselector></paymentselector>
+                    <div class="view-form-icon" ng-hide="currentOrder.copyShipAddress" ng-show="billaddresses.length > 0">
+                        <div ng-class="{'view-form-select': !currentOrder.BillAddressID, '': currentOrder.BillAddressID }">
+                            <label class="required">{{('Billing' | r) + ' ' + ('Address' | r) | xlat}}</label>
+                            <select class="form-control" ng-show="billaddresses" name="billingAddress"
+                                    ng-options="address.ID as address.AddressName for address in billaddresses | filter:{IsBilling:true}"
+                                    ng-model="currentOrder.BillAddressID" required>
+                                <option value=""></option>
+                            </select>
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                    </div>
+                    <!--<div class="order-location" ng-show="BillAddress">-->
+                    <div class="order-location" ng-show="currentOrder.BillAddressID">
+                        <p><strong><small>{{('Billing' | r) + ' ' + ('Location' | r) | xlat}}</small></strong></p>
+                        <!--<p ng-show="BillAddress.AddressName"><small>{{BillAddress.AddressName}}</small></p>-->
+                        <p ng-show="BillAddress.CompanyName"><small>{{BillAddress.CompanyName}}</small></p>
+                        <p ng-show="(BillAddress.FirstName || BillAddress.LastName) && (!user.Permissions.contains('EditBillToName') && BillAddress.IsCustEditable)">
+                            <small>{{BillAddress.FirstName + ' ' + BillAddress.LastName}}</small>
+                        </p>
+                        <div class="row" ng-show="user.Permissions.contains('EditBillToName') && !BillAddress.IsCustEditable">
+                            <div class="col-sm-2">
+                                <input class="form-control" ng-required="user.Permissions.contains('EditBillToName') && !BillAddress.IsCustEditable" type="text" ng-model="currentOrder.BillFirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" />
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" ng-required="user.Permissions.contains('EditBillToName') && !BillAddress.IsCustEditable" type="text" ng-model="currentOrder.BillLastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}"  />
+                            </div>
+                        </div>
+                        <p ng-show="BillAddress.Street1"><small>{{BillAddress.Street1}}</small></p>
+                        <p ng-show="BillAddress.Street2"><small>{{BillAddress.Street2}}</small></p>
+                        <p ng-show="BillAddress.City || BillAddress.State || BillAddress.Zip"><small>{{BillAddress.City}}<span ng-if="ShipAddress.City && ShipAddress.State">, </span> {{BillAddress.State}} {{BillAddress.Zip}}</small></p>
+                        <p ng-show="BillAddress.Phone"><small>{{BillAddress.Phone}}</small></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

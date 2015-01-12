@@ -42,6 +42,27 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
 		OrderConfig.address($scope.currentOrder, $scope.user);
 	});
 
+    /*cart Qty Count*/
+    //this is duplicated in navCtrl.js - optimally move both to service
+
+    $scope.$on('event:orderUpdate', function(event, order) {
+        //$scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
+        //$scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty; : null : null;
+
+        var newQty = 0;
+        if (!$scope.currentOrder) return newQty;
+        angular.forEach($scope.currentOrder.LineItems, function(item){
+            if(item.Quantity != 0){
+                newQty += +(item.Quantity);
+            }
+        });
+        //$scope.currentOrder.totalQty = newQty;
+        $scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty : null : null;
+
+    });
+    /*cart Qty Count*/
+
+
     function saveChanges(callback) {
 	    $scope.displayLoadingIndicator = true;
 	    $scope.errorMessage = null;

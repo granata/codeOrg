@@ -13,9 +13,14 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">
+                    <!--<h3 class="panel-title">
                         {{currentOrder.LineItems.length}} {{'item' + (currentOrder.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.LineItems.length)}} {{'cart' | rl | xlat}}
+                    </h3>-->
+                    <!--cart QtyCount-->
+                    <h3 class="panel-title">
+                        {{currentOrder.totalQty}} {{'item' + (currentOrder.totalQty > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.totalQty)}} {{'cart' | rl | xlat}}
                     </h3>
+                    <!--cart QtyCount-->
                 </div>
                 <div class="panel-lineitem" ng-repeat="item in currentOrder.LineItems">
                     <button type="button" title="Remove Item" class="btn btn-danger" ng-click="removeItem(item)">
@@ -44,19 +49,23 @@
                                 <a ng-href="cart/{{item.Product.InteropID}}/{{$index}}">
                                     <h3 class="text-primary">
                                         <i class="fa fa-edit"></i>
-                                        {{item.ProductIDText}}
+                                        <!--{{item.ProductIDText}}-->
+                                        {{item.Product.Name}}
                                     </h3>
                                     <p>
-                                        {{item.Product.Name}}
+                                        <!--{{item.Product.Name}}-->
+                                        {{item.ProductIDText}}
                                     </p>
                                 </a>
                             </div>
                             <div class="col-md-6" ng-if="currentOrder.Status == 'AwaitingApproval'">
                                 <h3 class="text-primary">
-                                    {{item.ProductIDText}}
+                                    <!--{{item.ProductIDText}}-->
+                                    {{item.Product.Name}}
                                 </h3>
                                 <p>
-                                    {{item.Product.Name}}
+                                    <!--{{item.Product.Name}}-->
+                                    {{item.ProductIDText}}
                                 </p>
                             </div>
                             <div class="col-md-6">
@@ -145,11 +154,11 @@
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-md-4 col-lg-3">
-                            <giftcardredemption ng-if="user.Permissions.contains('ViewPromotions')" />
+                            <!--<giftcardredemption ng-if="user.Permissions.contains('ViewPromotions')" />-->
                         </div>
                         <div class="col-md-3 col-md-offset-5 col-lg-4 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
                             <h4 class="text-primary">
-                                <strong>{{'Subtotal' | r | xlat}} <span class="text-success">{{currentOrder.Subtotal | culturecurrency}}</span></strong>
+                                <span class="subtotal">{{'Subtotal' | r | xlat}} <span class="text-success">{{currentOrder.Subtotal | culturecurrency}}</span></span>
                             </h4>
                             <p ng-show="TaxMethod" ng-if="user.Company.TaxMethod != 'NoTax'">
                                 <span class="text-info">{{'Shipping, handling and tax may be added to this subtotal.' | r | xlat}}</span>
@@ -160,9 +169,20 @@
                             </button>
                         </div>
                     </div>
+                    <!--guestCheckoutbuttons-->
+                    <div class="col-md-12 row">
+                        <div class="col-md-6">
+                            <btn class="btn btn-primary" redirect="catalog" ng-click="saveChanges()">Continue Shopping</btn>
+                        </div>
+                        <div class="col-md-6 text-right" ng-show="Four51User.currentUser.Email == ''">
+                            <btn class="btn btn-custom" redirect="checkoutGuest">Checkout As Guest</a>
+                        </div>
+                    </div>
+                    <!--guestCheckoutbuttons-->
                 </div>
             </div>
-            <div class="navbar-fixed-bottom">
+            <!--<div class="navbar-fixed-bottom">-->
+            <div class="row">
                 <div class="alert-warning text-center" style="padding: 10px;" ng-if="currentOrder.RepeatError">
                     {{'Some items were not added to your repeat order' | r | xlat}}: {{currentOrder.RepeatError}}
                 </div>
@@ -196,27 +216,36 @@
                         </li>
                     </ul>
                 </div>
+            <!--custom-->
+            </div>
+            <div class="row">
+            <!--custom-->
                 <ul>
-                    <li>
-                        <button type="button" class="btn btn-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
+                    <li class="col-lg-4"><!--add .col-lg-4-->
+                        <button type="button" class="btn btn-danger btn-block" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
                             <small ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
                             <small ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
                         </button>
                     </li>
-                    <li>
-                        <button type="submit" class="btn btn-primary" ng-click="saveChanges()">
+                    <li class="col-lg-4"><!--add .col-lg-4-->
+                        <button type="submit" class="btn btn-primary btn-block" ng-click="saveChanges()">
                             <loadingindicator  ng-show="displayLoadingIndicator" />
                             <small>{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</small>
                         </button>
                     </li>
-                    <li>
-                        <button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
+                    <li class="col-lg-4"><!--add .col-lg-4-->
+                        <!--<button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
                             <i ng-show="cart.$invalid" class="fa fa-warning"></i>
                             <span>{{'Check Out' | r | xlat}} {{window.outerWidth}}</span>
+                        </button>-->
+                        <button type="button" class="btn btn-block" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
+                            <i ng-show="cart.$invalid" class="fa fa-warning"></i>
+                            <span ng-show="Four51User.currentUser.Email == ''">{{('Check Out' | r) + ' / ' + ('Login' | r) | xlat}} {{window.outerWidth}}</span>
+                            <span ng-show="!Four51User.currentUser.Email == ''">{{('Check Out' | r) | xlat}} {{window.outerWidth}}</span>
                         </button>
                     </li>
                 </ul>
-
+            </div><!--custom-->
             </div>
         </form>
     </div>
