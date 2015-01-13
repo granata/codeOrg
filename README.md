@@ -104,6 +104,9 @@
 `partials/controls/orderBilling.html`
 * update ng-show /lines 23 & 27
 
+`partials/controls/paymentSelection.html`
+* add ng-disabled /lines 31
+
 ### Specific File Additions
 `lib/angular/plugins/bootstrapLightbox.js`
 * add Product Lightbox plugin

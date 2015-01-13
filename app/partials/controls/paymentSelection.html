@@ -25,11 +25,13 @@
             <i ng-class="{'fa fa-check': currentOrder.PaymentMethod == 'CreditCard' }"></i>
             {{'Credit Card' | r | xlat}}
         </button>
+        <!--same as shipping checkbox-->
         <button class="btn btn-info pull-right" type="button"
                 ng-hide="(billaddressform || (!addressform && (addresses | filter:{IsBilling:true}).length == 0) || !user.Permissions.contains('CreateBillToAddress'))"
                 ng-click="billaddressform = true" ng-disabled="currentOrder.copyShipAddress">
             {{('New' | r) + ' ' +  ('Address' | r) | xlat}}
         </button>
+         <!--same as shipping checkbox-->
     </span>
     <div class="view-form-icon" ng-if="user.Permissions.contains('PayByBudgetAccount')" ng-show="currentOrder.PaymentMethod == 'BudgetAccount'">
         <div ng-show="(SpendingAccounts|filter:{ForPurchase:true}).length == 1" class="alert alert-success">
