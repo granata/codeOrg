@@ -31,11 +31,16 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
                 item.Product.LargeImageUrl = images[item.Product.ExternalID].LargeImageUrl;
                 item.Product.SmallImageUrl = images[item.Product.ExternalID].SmallImageUrl;
             }
-
-
 		});
 
-		order.forceMultipleShip = function(value) {
+        /*analyze custom field types*/
+        angular.forEach(order.OrderFields, function(f) {
+            f.InputType =  (f.Name.toLowerCase().indexOf('email') > -1) ? "email" : (f.Name.toLowerCase().indexOf('date needed') > -1) ? "date" : "other";
+        });
+        /*analyze custom field types*/
+
+
+        order.forceMultipleShip = function(value) {
 			_multipleShip = value;
 		}
 		order.IsMultipleShip = function() {
