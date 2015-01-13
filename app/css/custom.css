@@ -151,12 +151,6 @@ ul.topNav {
     float:right;
 }
 
-@media (max-width:1200px){
-    .main li {
-        float:left;
-    }
-}
-
 .main a {
     text-transform:uppercase;
     font-size:18px;
@@ -165,6 +159,15 @@ ul.topNav {
     padding:0;
 }
 
+@media (max-width:992px){
+    .main li {
+        float:left;
+    }
+
+    .main a {
+        font-size: 1em;
+    }
+}
 
 .main .dropdown-menu {
     background-color: #FFF;
