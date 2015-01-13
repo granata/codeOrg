@@ -1,4 +1,4 @@
-## code.Org SPA 1.1.2 0115 - Last Updated: 1/12/15
+## code.Org SPA 1.1.2 0115 - Last Updated: 1/13/15
 ========
 
 ### Theme URL
@@ -55,7 +55,7 @@
 ### Additional Functionality
 * Product Lightbox
 * same as shipping address checkbox
-* guest checkout
+* guest checkout layout
 
 ### Specific File Changes
 `index.html`
