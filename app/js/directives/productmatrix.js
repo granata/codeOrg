@@ -78,7 +78,7 @@ four51.app.factory('ProductMatrix', ['$resource', '$451', 'Variant', function($r
             var count = 0;
             angular.forEach(order.LineItems, function(item) {
                 if (item.Variant && item.Variant.ExternalID == variant.ExternalID) {
-                    count = count + item.Quantity;
+                    count = +(count) + (+(item.Quantity));
                 }
             });
             return count;
@@ -265,6 +265,7 @@ four51.app.directive('productmatrix', function() {
             "    </div>" +
             "    <div class=\"alert alert-danger\" style=\"margin-top:20px;\" ng-show=\"qtyError\" ng-bind-html=\"qtyError\"></div>" +
             "    <button class=\"btn btn-success btn-block btn-lg\" type=\"button\" id=\"451_btn_orderadd\" ng-disabled=\"qtyError\" ng-click=\"addVariantsToOrder()\"><loadingindicator ng-show=\"addToOrderIndicator\" /><i ng-show=\"lineItemErrors.length > 0\" class=\"fa fa-warning\"></i>{{addToOrderText | r}}</button>" +
+            "    <div class=\"view-response-message alert-success text-center\" alert-show=\"actionMessage\"><p>{{actionMessage | r | xlat}}</p></div>" +
             "</div>",
         controller: 'ProductMatrixCtrl'
     }
@@ -320,21 +321,38 @@ four51.app.controller('ProductMatrixCtrl', ['$scope', '$routeParams', '$route', 
         };
 
         $scope.addVariantsToOrder = function(){
+            $scope.actionMessage = null;
             if(!$scope.currentOrder){
                 $scope.currentOrder = {};
                 $scope.currentOrder.LineItems = [];
             }
             ProductMatrix.addToOrder($scope.comboVariants, $scope.product, $scope.$parent.LineItem.Specs, function(lineItems) {
                 $scope.addToOrderIndicator = true;
+                var quantity = 0;
                 angular.forEach(lineItems, function(li) {
                     $scope.currentOrder.LineItems.push(li);
+                    quantity += +(li.Quantity);
                 });
                 Order.save($scope.currentOrder,
                     function(o){
                         $scope.$parent.$parent.user.CurrentOrderID = o.ID;
                         User.save($scope.$parent.$parent.user, function(){
-                            $scope.addToOrderIndicator = true;
-                            $location.path('/cart');
+                            $scope.addToOrderIndicator = false;
+                            $scope.actionMessage = quantity + " " + (quantity > 1 ? 'items' : 'item') + " added to your cart.";
+                            /*angular.forEach($scope.comboVariants, function(group) {
+                                angular.forEach(group, function(item) {
+                                    item.Quantity = null;
+                                });
+                            });*/
+                            ProductMatrix.build($scope.product, $scope.currentOrder, function(matrix, specCount, spec1Name, spec2Name) {
+                                $scope.specCount = specCount;
+                                $scope.spec1Name = spec1Name;
+                                $scope.spec2Name = spec2Name;
+                                $scope.comboVariants = matrix;
+                                lineItemEdit();
+                                $scope.matrixLoadingIndicator = false;
+                            });
+                            //$location.path('/cart');
                         });
                     },
                     function(ex) {
