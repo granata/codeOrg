@@ -1,4 +1,4 @@
-four51.app.directive('orderbilling', ['Address', 'AddressList', function(Address, AddressList) {
+four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address', 'AddressList', function($rootScope, Order, Shipper, Address, AddressList) {
 	var obj = {
 		restrict: 'AE',
 		templateUrl: 'partials/controls/orderBilling.html',
@@ -10,6 +10,11 @@ four51.app.directive('orderbilling', ['Address', 'AddressList', function(Address
 					if (!AddressList.contains($scope.currentOrder.BillAddress))
 						$scope.billaddresses.push($scope.currentOrder.BillAddress);
 				}
+
+                /*same as ship address checkbox*/
+                $scope.currentOrder.copyShipAddress = false;
+                /*same as ship address checkbox*/
+
 			});
 			$scope.billaddress = { Country: 'US', IsShipping: false, IsBilling: true };
 
@@ -37,12 +42,44 @@ four51.app.directive('orderbilling', ['Address', 'AddressList', function(Address
 						}
 						$scope.BillAddress = add;
 					});
+
+                    /*same as ship address checkbox*/
+                    if ($scope.currentOrder.BillAddressID != $scope.orderShipAddress.ID) {
+                        $scope.currentOrder.copyShipAddress = false;
+                    }
+                    if ($scope.currentOrder.BillAddressID == $scope.orderShipAddress.ID) {
+                        $scope.currentOrder.copyShipAddress = true;
+                    }
+                    /*same as ship address checkbox*/
+
 				}
 			});
 
 			$scope.$on('event:AddressCancel', function(event) {
 				$scope.billaddressform = false;
 			});
+
+            /*same as ship address checkbox*/
+            $scope.resetBilling = function() {
+
+                if ($scope.currentOrder.copyShipAddress == true) {
+                    $scope.currentOrder.BillAddressID = $scope.orderShipAddress.ID;
+                    $scope.shipaddress.IsBilling = true;
+                }
+                if ($scope.currentOrder.copyShipAddress == false) {
+                    $scope.currentOrder.BillAddressID = '';
+                    $scope.shipaddress.IsBilling = false;
+                }
+            }
+
+            $scope.$on('shipChange', function() {
+                $scope.currentOrder.BillAddressID = '';
+                $scope.shipaddress.IsBilling = false;
+                $scope.currentOrder.copyShipAddress = false;
+            });
+            /*same as ship address checkbox*/
+
+
 		}]
 	};
 	return obj;

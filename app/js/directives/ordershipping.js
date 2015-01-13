@@ -1,4 +1,4 @@
-four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressList', function(Order, Shipper, Address, AddressList) {
+four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Address', 'AddressList', function($rootScope, Order, Shipper, Address, AddressList) {
 	var obj = {
 		restrict: 'AE',
 		templateUrl: 'partials/controls/orderShipping.html',
@@ -148,6 +148,12 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 					li.Shipper = null;
 					li.ShipperID = null;
 				});
+
+                /*same as ship address checkbox*/
+                // broadcast to orderbilling.js that ship address changed
+                $rootScope.$broadcast('shipChange');
+                /*same as ship address checkbox*/
+
 				saveChanges(
 					function(order) {
 						Shipper.query(order, function(list) {
@@ -195,6 +201,11 @@ four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressLi
 						$scope.shippingFetchIndicator = false;
 					});
 				}
+
+                /*same as ship address checkbox*/
+                // broadcast to orderbilling.js that ship method changed
+                $rootScope.$broadcast('shipChange');
+                /*same as ship address checkbox*/
 			};
 
 			$scope.$on('event:AddressCancel', function(event) {

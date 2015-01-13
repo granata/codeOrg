@@ -10,10 +10,21 @@
         <div>
             <billingmessage />
         </div>
-        <div ng-show="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+        <div class="row" ng-hide="billaddressform">
+            <div class="checkbox">
+                <label>
+                    <input name="sameAsShipping" type="checkbox" ng-model="currentOrder.copyShipAddress" ng-change="resetBilling()"
+                           ng-disabled="!currentOrder.ShipAddressID" />
+                    {{'Same as Shipping Address' | r | xlat}}
+                </label>
+            </div>
+        </div>
+        <!--<div ng-show="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">-->
+        <div ng-show="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
             <addressinput address='billaddress' user='user'></addressinput>
         </div>
-        <div ng-hide="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+        <!--<div ng-hide="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">-->
+        <div ng-hide="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
             <form name="cart_billing" novalidate="">
                 <div>
                     <paymentselector></paymentselector>

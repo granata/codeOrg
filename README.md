@@ -92,6 +92,18 @@
 * add conditional userType class
 * add favorites active class
 
+`js/directives/orderbilling.js`
+* set currentOrder.copyShipAddress / lines 14-16
+* update $scope.$watch / lines 46-53
+* resetBilling fn and $scope.$on / lines 61-79
+
+`js/directives/ordershipping.js`
+* broadcast ship address change / lines 152-155
+* broadcast ship method change / lines 205-208
+
+`partials/controls/orderBilling.html`
+* update ng-show /lines 23 & 27
+
 ### Specific File Additions
 `lib/angular/plugins/bootstrapLightbox.js`
 * add Product Lightbox plugin
@@ -101,9 +113,14 @@
 
 `js/directives/ordershippingguest.js`
 * Guest Checkout Order Shipping directive
+* broadcast ship address change / lines 153-156
+* broadcast ship method change / lines 206-209
 
 `js/directives/orderbillingguest.js`
 * Guest Checkout Order Billing directive
+* set currentOrder.copyShipAddress / lines 14-16
+* update $scope.$watch / lines 46-53
+* resetBilling fn and $scope.$on / lines 61-79
 
 `partials/controls/addressInputGuest.html`
 * Guest Checkout Address Input html
@@ -113,5 +130,6 @@
 
 `partials/controls/orderBillingGuest.html`
 * Guest Checkout Order Billing html
+* update ng-show /lines 23 & 27
 
 

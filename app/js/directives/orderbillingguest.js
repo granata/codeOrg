@@ -10,9 +10,11 @@ four51.app.directive('orderbillingguest', ['$rootScope', 'Order', 'Shipper', 'Ad
                     if (!AddressList.contains($scope.currentOrder.BillAddress))
                         $scope.billaddresses.push($scope.currentOrder.BillAddress);
                 }
-                $scope.currentOrder.copyBillingAddress = false;
-                //add this line here to default billing address to shipping address
-                //$scope.currentOrder.BillAddressID = $scope.orderShipAddress.ID;
+
+                /*same as ship address checkbox*/
+                $scope.currentOrder.copyShipAddress = false;
+                /*same as ship address checkbox*/
+
             });
             $scope.billaddress = { Country: 'US', IsShipping: false, IsBilling: true };
 
@@ -40,6 +42,15 @@ four51.app.directive('orderbillingguest', ['$rootScope', 'Order', 'Shipper', 'Ad
                         }
                         $scope.BillAddress = add;
                     });
+
+                    /*same as ship address checkbox*/
+                    if ($scope.currentOrder.BillAddressID != $scope.orderShipAddress.ID) {
+                        $scope.currentOrder.copyShipAddress = false;
+                    }
+                    if ($scope.currentOrder.BillAddressID == $scope.orderShipAddress.ID) {
+                        $scope.currentOrder.copyShipAddress = true;
+                    }
+                    /*same as ship address checkbox*/
                 }
             });
 
@@ -47,34 +58,27 @@ four51.app.directive('orderbillingguest', ['$rootScope', 'Order', 'Shipper', 'Ad
                 $scope.billaddressform = false;
             });
 
-            //custom
+            /*same as ship address checkbox*/
             $scope.resetBilling = function() {
 
-                if ($scope.currentOrder.copyBillingAddress == true) {
+                if ($scope.currentOrder.copyShipAddress == true) {
                     $scope.currentOrder.BillAddressID = $scope.orderShipAddress.ID;
                     $scope.shipaddress.IsBilling = true;
                 }
-                if ($scope.currentOrder.copyBillingAddress == false) {
+                if ($scope.currentOrder.copyShipAddress == false) {
                     $scope.currentOrder.BillAddressID = '';
                     $scope.shipaddress.IsBilling = false;
                 }
             }
 
-            $scope.$on('shipAddressChange', function() {
+            $scope.$on('shipChange', function() {
                 $scope.currentOrder.BillAddressID = '';
                 $scope.shipaddress.IsBilling = false;
-                $scope.currentOrder.copyBillingAddress = false;
+                $scope.currentOrder.copyShipAddress = false;
             });
-            //
+            /*same as ship address checkbox*/
+
         }]
     };
     return obj;
 }]);
-
-/*four51.app.directive('billingmessage', function() {
- var obj = {
- restrict: 'E',
- templateUrl: 'partials/messages/billing.html'
- };
- return obj;
- });*/

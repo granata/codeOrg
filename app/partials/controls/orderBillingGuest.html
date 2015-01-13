@@ -12,7 +12,7 @@
         <!--<div>
             <billingmessage />
         </div>-->
-        <!--custom-->
+        <!--same as ship address checkbox-->
         <div class="row" ng-hide="billaddressform">
             <div class="checkbox">
                 <label>
@@ -22,6 +22,8 @@
                 </label>
             </div>
         </div>
+        <!--same as ship address checkbox-->
+        <!--<div ng-show="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">-->
         <div ng-show="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
             <addressinputguest address='billaddress' user='user'></addressinputguest>
         </div>
@@ -30,11 +32,13 @@
             <form name="cart_billing" novalidate="">
                 <div>
                     <!--<div ng-show="currentOrder.BillAddressID" ng-repeat="field in currentOrder.OrderFields">-->
+                    <!--custom-->
                     <div ng-repeat="field in currentOrder.OrderFields">
                         <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
                         <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
                     </div>
                     <br /><br />
+                    <!--custom-->
                     <paymentselector></paymentselector>
                     <div class="view-form-icon" ng-hide="currentOrder.copyShipAddress" ng-show="billaddresses.length > 0">
                         <div ng-class="{'view-form-select': !currentOrder.BillAddressID, '': currentOrder.BillAddressID }">
@@ -48,7 +52,7 @@
                         </div>
                     </div>
                     <!--<div class="order-location" ng-show="BillAddress">-->
-                    <div class="order-location" ng-show="currentOrder.BillAddressID">
+                    <div class="order-location" ng-show="currentOrder.BillAddressID && !currentOrder.copyShipAddress">
                         <p><strong><small>{{('Billing' | r) + ' ' + ('Location' | r) | xlat}}</small></strong></p>
                         <!--<p ng-show="BillAddress.AddressName"><small>{{BillAddress.AddressName}}</small></p>-->
                         <p ng-show="BillAddress.CompanyName"><small>{{BillAddress.CompanyName}}</small></p>

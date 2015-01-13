@@ -27,7 +27,7 @@
         </button>
         <button class="btn btn-info pull-right" type="button"
                 ng-hide="(billaddressform || (!addressform && (addresses | filter:{IsBilling:true}).length == 0) || !user.Permissions.contains('CreateBillToAddress'))"
-                ng-click="billaddressform = true">
+                ng-click="billaddressform = true" ng-disabled="currentOrder.copyShipAddress">
             {{('New' | r) + ' ' +  ('Address' | r) | xlat}}
         </button>
     </span>

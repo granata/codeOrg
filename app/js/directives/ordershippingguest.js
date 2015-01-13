@@ -150,8 +150,10 @@ four51.app.directive('ordershippingguest', ['$rootScope', 'Order', 'Shipper', 'A
                     li.ShipperID = null;
                 });
 
+                /*same as ship address checkbox*/
                 // broadcast to orderbilling.js that ship address changed
-                $rootScope.$broadcast('shipAddressChange');
+                $rootScope.$broadcast('shipChange');
+                /*same as ship address checkbox*/
 
                 saveChanges(
                     function(order) {
@@ -201,8 +203,10 @@ four51.app.directive('ordershippingguest', ['$rootScope', 'Order', 'Shipper', 'A
                     });
                 }
 
+                /*same as ship address checkbox*/
                 // broadcast to orderbilling.js that ship method changed
-                $rootScope.$broadcast('shipAddressChange');
+                $rootScope.$broadcast('shipChange');
+                /*same as ship address checkbox*/
             };
 
 
@@ -224,11 +228,3 @@ four51.app.directive('ordershippingguest', ['$rootScope', 'Order', 'Shipper', 'A
     };
     return obj;
 }]);
-
-/*four51.app.directive('shippingmessage', function() {
- var obj = {
- restrict: 'E',
- templateUrl: 'partials/messages/shipping.html'
- };
- return obj;
- });*/
