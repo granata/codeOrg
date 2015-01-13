@@ -59,6 +59,7 @@ function ($location, $route, $scope, $451, User) {
             }
         });
         $scope.currentOrder.totalQty = newQty;
+        //$scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty : null : null;
         /*cartCount*/
 
 	});

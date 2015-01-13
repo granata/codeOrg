@@ -28,7 +28,7 @@
         <!--same as shipping checkbox-->
         <button class="btn btn-info pull-right" type="button"
                 ng-hide="(billaddressform || (!addressform && (addresses | filter:{IsBilling:true}).length == 0) || !user.Permissions.contains('CreateBillToAddress'))"
-                ng-click="billaddressform = true" ng-disabled="currentOrder.copyShipAddress">
+                ng-click="billaddressform = true" ng-show="!currentOrder.copyShipAddress">
             {{('New' | r) + ' ' +  ('Address' | r) | xlat}}
         </button>
          <!--same as shipping checkbox-->
