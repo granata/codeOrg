@@ -231,11 +231,11 @@ four51.app.directive('productmatrix', function() {
             "    <div ng-repeat=\"group in comboVariants\"  ng-show=\"specCount == 2\">" +
             "        <h3>{{group.DisplayName}}</h3>" +
             "        <div class=\"row matrix-grid\">" +
-            "            <div class=\"col-xs-2\"><div>{{spec2Name}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\"><b>{{item.DisplayName[1]}}</b></div></div>" +
-            "            <div class=\"col-xs-2\" ng-show=\"product.DisplayInventory\"><div>{{'Quantity Available' | r}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\">{{item.QuantityAvailable}}</div></div>" +
-            "            <div class=\"col-xs-2\" ng-show=\"displayOnOrder\"><div>{{'On Order' | r}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\">{{item.OrderQuantity}}</div></div>" +
+            "            <div class=\"col-xs-3\"><div>{{spec2Name}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\"><b>{{item.DisplayName[1]}}</b></div></div>" +
+            "            <div class=\"col-xs-3\" ng-show=\"product.DisplayInventory\"><div>{{'Quantity Available' | r}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\">{{item.QuantityAvailable}}</div></div>" +
+            "            <div class=\"col-xs-3\" ng-show=\"displayOnOrder\"><div>{{'On Order' | r}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\">{{item.OrderQuantity}}</div></div>" +
             "            <div class=\"col-xs-3\"><div>{{'Price' | r}}</div><div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\">{{(product.StandardPriceSchedule.PriceBreaks[0].Price + item.Markup) | currency}}</div></div>" +
-            "            <div ng-class=\"{'col-xs-3':(product.DisplayInventory && displayOnOrder),'col-xs-5':(!product.DisplayInventory && displayOnOrder),'col-xs-4':(product.DisplayInventory && !displayOnOrder),'col-xs-6':(!product.DisplayInventory && !displayOnOrder)}\">" +
+            "            <div class=\"col-xs-3\">" +
             "                <div>{{'Quantity' | r}}</div>" +
             "                <div ng-repeat=\"item in group | orderobjectby:'ListOrder':false\">" +
             "                    <div>" +
@@ -248,11 +248,11 @@ four51.app.directive('productmatrix', function() {
             "    </div>" +
             "    <div ng-show=\"specCount == 1\">" +
             "        <div class=\"row matrix-grid\">" +
-            "            <div class=\"col-xs-2\"><div>{{spec1Name}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\"><b>{{group.DisplayName}}</b></div></div>" +
-            "            <div class=\"col-xs-2\" ng-show=\"product.DisplayInventory\"><div>{{'Quantity Available' | r}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\">{{group.QuantityAvailable}}</div></div>" +
-            "            <div class=\"col-xs-2\" ng-show=\"displayOnOrder\"><div>{{'On Order' | r}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\">{{group.OrderQuantity}}</div></div>" +
+            "            <div class=\"col-xs-3\"><div>{{spec1Name}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\"><b>{{group.DisplayName}}</b></div></div>" +
+            "            <div class=\"col-xs-3\" ng-show=\"product.DisplayInventory\"><div>{{'Quantity Available' | r}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\">{{group.QuantityAvailable}}</div></div>" +
+            "            <div class=\"col-xs-3\" ng-show=\"displayOnOrder\"><div>{{'On Order' | r}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\">{{group.OrderQuantity}}</div></div>" +
             "            <div class=\"col-xs-3\"><div>{{'Price' | r}}</div><div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\">{{(product.StandardPriceSchedule.PriceBreaks[0].Price + group.Markup) | currency}}</div></div>" +
-            "            <div ng-class=\"{'col-xs-3':(product.DisplayInventory && displayOnOrder),'col-xs-5':(!product.DisplayInventory && displayOnOrder),'col-xs-4':(product.DisplayInventory && !displayOnOrder),'col-xs-6':(!product.DisplayInventory && !displayOnOrder)}\">" +
+        "                <div class=\"col-xs-3\">" +
             "                <div>{{'Quantity' | r}}</div>" +
             "                <div ng-repeat=\"group in comboVariants | orderobjectby:'ListOrder':false\">" +
             "                    <div>" +
