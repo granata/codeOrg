@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <!--<div class="order-location" ng-show="BillAddress">-->
-                    <div class="order-location" ng-show="currentOrder.BillAddressID && !currentOrder.copyShipAddress">
+                    <div class="order-location" ng-show="currentOrder.BillAddressID">
                         <p><strong><small>{{('Billing' | r) + ' ' + ('Location' | r) | xlat}}</small></strong></p>
                         <!--<p ng-show="BillAddress.AddressName"><small>{{BillAddress.AddressName}}</small></p>-->
                         <p ng-show="BillAddress.CompanyName"><small>{{BillAddress.CompanyName}}</small></p>

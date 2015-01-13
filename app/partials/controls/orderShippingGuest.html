@@ -56,16 +56,9 @@
                                         <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
                                         <select name="shipMethod" class="form-control" ng-change="updateShipper()"
                                                 ng-model="currentOrder.LineItems[0].ShipperName"
-                                                ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown' && user.Groups[0].Name != 'Affiliates'"
-                                                ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | culturecurrency)) for shipper in shippers | filter: { Name: '!' + 'USPS Standard Post&reg;'}"
+                                                ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
+                                                ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | culturecurrency)) for shipper in shippers"
                                                 ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null">
-                                            <option value=""></option>
-                                        </select>
-                                        <select name="shipMethod" class="form-control" ng-change="updateShipper()"
-                                                ng-model="currentOrder.LineItems[0].ShipperName"
-                                                ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown' && user.Groups[0].Name == 'Affiliates'"
-                                                ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | culturecurrency)) for shipper in shippers | filter:{Name: 'UPS Ground'}"
-                                                ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
                                             <option value=""></option>
                                         </select>
                                         <i class="fa fa-truck"></i>
