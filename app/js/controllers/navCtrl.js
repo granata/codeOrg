@@ -48,9 +48,8 @@ function ($location, $route, $scope, $451, User) {
 	}
 
 	$scope.$on('event:orderUpdate', function(event, order) {
-		/*$scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;*/
+        $scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
 
-        /*cartCount*/
         var newQty = 0;
         if (!$scope.currentOrder) return newQty;
         angular.forEach($scope.currentOrder.LineItems, function(item){
@@ -58,9 +57,7 @@ function ($location, $route, $scope, $451, User) {
                 newQty += +(item.Quantity);
             }
         });
-        $scope.currentOrder.totalQty = newQty;
-        //$scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty : null : null;
-        /*cartCount*/
+        $scope.currentOrder.TotalQty = newQty;
 
 	});
 }]);

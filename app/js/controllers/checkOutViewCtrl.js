@@ -14,7 +14,23 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
     }
 
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
-	$scope.checkOutSection = $scope.hasOrderConfig ? 'order' : 'shipping';
+	//$scope.checkOutSection = $scope.hasOrderConfig ? 'order' : 'shipping';
+
+    /*PW-13837 RP - Code.org - Make it so the billing section is disabled (can't open it) until... */
+    $scope.checkOutSection = 'shipping';
+    $scope.$watch('currentOrder.ShipAddressID', function() {
+        if ($scope.currentOrder.ShipAddressID && $scope.currentOrder.ShipperID) {
+            $scope.checkOutSection = 'billing';
+            $scope.setPanel = 'billing';
+        }
+    });
+    $scope.$watch('currentOrder.ShipperID', function() {
+        if ($scope.currentOrder.ShipAddressID && $scope.currentOrder.ShipperID) {
+            $scope.checkOutSection = 'billing';
+            $scope.setPanel = 'billing';
+        }
+    });
+    /*PW-13837 RP - Code.org - Make it so the billing section is disabled (can't open it) until... */
 
     function submitOrder() {
 	    $scope.displayLoadingIndicator = true;
@@ -46,8 +62,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
     //this is duplicated in navCtrl.js - optimally move both to service
 
     $scope.$on('event:orderUpdate', function(event, order) {
-        //$scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
-        //$scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty; : null : null;
+        $scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
 
         var newQty = 0;
         if (!$scope.currentOrder) return newQty;
@@ -56,8 +71,8 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
                 newQty += +(item.Quantity);
             }
         });
-        //$scope.currentOrder.totalQty = newQty;
-        $scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty : null : null;
+        $scope.currentOrder.TotalQty = newQty;
+        //$scope.currentOrder.totalQty = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? newQty : null : null;
 
     });
     /*cart Qty Count*/

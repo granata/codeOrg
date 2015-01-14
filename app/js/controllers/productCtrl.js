@@ -116,6 +116,7 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 						$scope.addToOrderIndicator = false;
                         $scope.actionMessage = quantity + " " + (+(quantity) > 1 ? 'items' : 'item') + " added to your cart.";
                         $scope.LineItem.Quantity = null;
+                        $scope.TotalQty = quantity;
 						//$location.path('/cart');
 					});
 				},

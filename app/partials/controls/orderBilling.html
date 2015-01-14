@@ -27,8 +27,34 @@
         <div ng-hide="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
             <form name="cart_billing" novalidate="">
                 <div>
+                    <!--custom-->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div ng-repeat="field in currentOrder.OrderFields | filter:{Name: 'Date needed by'}">
+                                <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
+                                <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div ng-repeat="field in currentOrder.OrderFields | filter:{Name: 'Code.org Cost Center'}">
+                                <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
+                                <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div ng-repeat="field in currentOrder.OrderFields | filter: { Name: 'Code.org Guest Email'}">
+                                <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
+                                <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
+                            </div>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <!--custom-->
                     <paymentselector></paymentselector>
-                    <div class="view-form-icon" ng-show="billaddresses.length > 0">
+                    <!--<div class="view-form-icon" ng-show="billaddresses.length > 0">-->
+                    <div class="view-form-icon" ng-hide="currentOrder.copyShipAddress" ng-show="billaddresses.length > 0">
                         <div ng-class="{'view-form-select': !currentOrder.BillAddressID, '': currentOrder.BillAddressID }">
                             <label class="required">{{('Billing' | r) + ' ' + ('Address' | r) | xlat}}</label>
                             <select class="form-control" ng-show="billaddresses" name="billingAddress"
@@ -38,7 +64,8 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                     </div>
-                    <div class="order-location" ng-show="BillAddress">
+                    <!--<div class="order-location" ng-show="BillAddress">-->
+                    <div class="order-location" ng-show="currentOrder.BillAddressID && !currentOrder.copyShipAddress">
                         <p><strong><small>{{('Billing' | r) + ' ' + ('Location' | r) | xlat}}</small></strong></p>
                         <p ng-show="BillAddress.AddressName"><small>{{BillAddress.AddressName}}</small></p>
                         <p ng-show="BillAddress.CompanyName"><small>{{BillAddress.CompanyName}}</small></p>

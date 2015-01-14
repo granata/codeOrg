@@ -1,17 +1,26 @@
 <div class="panel panel-default panel-order billSection">
     <div class="panel-heading" ng-class="{'no': cart_billing.$invalid, 'yes': !cart_billing.$invalid, 'open': checkOutSection == 'billing' }">
-        <!--<div class="panel-heading" ng-disabled="cart_shipping.$invalid" ng-class='yes'>-->
-        <h3 ng-click="checkOutSection = 'billing'" class="panel-title">
+            <!--<h3 ng-disabled="checkOutSection != 'billing'" class="panel-title">
             <i class="pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
             {{'Billing' | r | xlat}}
-            <i class="pull-right" ng-class="{'fa fa-caret-up': currentOrder.checkOutSection == 'billing', 'fa fa-caret-down': currentOrder.checkOutSection != 'billing' }"></i>
+            <i class="pull-right" ng-class="{'fa fa-caret-up': checkOutSection == 'billing', 'fa fa-caret-down': checkOutSection != 'billing' }"></i>
+        </h3>-->
+        <h3 class="panel-title panel-primary">
+            <i class="pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
+            {{'Billing' | r | xlat}}
+            <!--<a class="pull-right" ng-show="checkOutSection == 'shipping'" ng-click="checkOutSection = 'shipping'">
+                <i ng-class="{'': checkOutSection == 'shipping', 'fa fa-edit': checkOutSection == 'billing' }"></i>
+            </a>
+            <a class="pull-right" ng-show="checkOutSection == 'shipping' && !cart_shipping.$invalid" ng-click="checkOutSection = 'billing'">
+                <i ng-class="{'fa fa-times': checkOutSection == 'shipping', '': checkOutSection == 'billing' }"></i>
+            </a>-->
         </h3>
     </div>
-    <div class="panel-body collapse" collapse="checkOutSection != 'billing'">
+    <div class="panel-body collapse" ng-disabled="cart_shipping.$invalid" collapse="checkOutSection != 'billing'">
         <!--<div class="panel-body" ng-show="currentOrder.checkOutSection == 'options'">-->
-        <!--<div>
+        <div>
             <billingmessage />
-        </div>-->
+        </div>
         <!--same as ship address checkbox-->
         <div class="row" ng-hide="billaddressform">
             <div class="checkbox">
@@ -35,13 +44,6 @@
                     <!--custom-->
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
-                            <!--<div class="view-form-icon">
-                                <div>
-                                    <label class="required">Date Needed By</label>
-                                    <customdatefield customfield="customfield.Name.['Date needed by']"></customdatefield>
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                            </div>-->
                             <div ng-repeat="field in currentOrder.OrderFields | filter:{Name: 'Date needed by'}">
                                 <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
                                 <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
@@ -78,7 +80,7 @@
                         </div>
                     </div>
                     <!--<div class="order-location" ng-show="BillAddress">-->
-                    <div class="order-location" ng-show="currentOrder.BillAddressID">
+                    <div class="order-location" ng-show="currentOrder.BillAddressID && !currentOrder.copyShipAddress">
                         <p><strong><small>{{('Billing' | r) + ' ' + ('Location' | r) | xlat}}</small></strong></p>
                         <!--<p ng-show="BillAddress.AddressName"><small>{{BillAddress.AddressName}}</small></p>-->
                         <p ng-show="BillAddress.CompanyName"><small>{{BillAddress.CompanyName}}</small></p>

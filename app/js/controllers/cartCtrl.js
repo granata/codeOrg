@@ -133,7 +133,6 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 		});
 		$scope.currentOrder.Subtotal = newTotal;
 
-        /*cart Qty Count*/
         var newQty = 0;
         if (!$scope.currentOrder) return newQty;
         angular.forEach($scope.currentOrder.LineItems, function(item){
@@ -142,8 +141,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
             }
 
         });
-        $scope.currentOrder.totalQty = newQty;
-        /*cart Qty Count*/
+        $scope.currentOrder.TotalQty = newQty;
 
 
 	}, true);

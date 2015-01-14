@@ -162,12 +162,17 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="cart" ng-show="currentOrder.totalQty && user.CurrentOrderID"
+                            <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
+                                <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
+                                    <span ng-bind="cartCount" class="badge"></span>
+                                </a>
+                            </li>
+                            <li class="cart" ng-show="currentOrder.TotalQty && user.CurrentOrderID"
                                 ng-class="{'active': isActive(['cart', 'checkout', 'checkoutGuest'])}">
                                 <!--<a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
                                     <span ng-bind="cartCount" class="badge"></span>-->
                                 <a id="451qa_cart_link" class="cart" href="cart">
-                                    <span class="badge" ng-bind="currentOrder.totalQty"></span>
+                                    <span class="badge" ng-bind="currentOrder.TotalQty"></span>
                                     <!--<span class="badge">{{currentOrder.totalCartQty}}</span>-->
                                     <i class="fa fa-shopping-cart hidden-xs"></i>
                                     <i class="fa fa-caret-down"></i>
