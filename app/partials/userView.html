@@ -1,4 +1,12 @@
 <section class="user-view">
+    <div class="hidden-md hidden-lg" ng-class="{'panel panel-default':!user.Permissions.contains('ViewSelfAdmin')}">
+        <div class="panel-heading" ng-show="!user.Permissions.contains('ViewSelfAdmin')">
+            <h3 class="panel-title">{{'My Account' | r | xlat}}</h3>
+        </div>
+        <div ng-class="{'panel-body':!user.Permissions.contains('ViewSelfAdmin')}">
+            <accountnavigation />
+        </div>
+    </div>
     <loadingindicator title="{{'Please wait while we save your changes' | r | xlat}}" ng-show="displayLoadingIndicator"/>
     <identifyusermessage ng-show="user.Type == 'TempCustomer'" />
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="login_existing" ng-submit="loginExisting()" ng-if="user.Type == 'TempCustomer'">

@@ -1,12 +1,12 @@
 <section class="address-list-view">
     <loadingindicator ng-show="displayLoadingIndicator" />
+    <accountnavigation />
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{'Addresses' | r | xlat}}</h3>
         </div>
         <div class="panel panel-default" ng-show="!addresses.length > 0">
             <div class="panel-body">
-                <accountnavigation />
                 <p class="alert alert-warning">{{'No' + ' ' + ('addresses' | rc) + ' ' + 'available' | xlat}}</p>
             </div>
             <div class="panel-footer">
@@ -15,7 +15,6 @@
         </div>
         <div class="panel panel-default" ng-if="(addresses | filter:{IsCustEditable:true}).length > 0">
             <div class="view-form-icon panel-body" ng-show="addresses.length > 0">
-                <accountnavigation />
                 <form name="searchForm">
                     <div class="input-group">
                         <input type="text" ng-model="searchTerm"  class="form-control" placeholder="{{('Search' | r) + ' ' + ('Addresses' | r) | xlat}}" />

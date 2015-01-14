@@ -1,10 +1,10 @@
 <section>
+    <accountnavigation />
     <div class="panel panel-default" ng-if="messages.length == 0">
         <div class="panel-heading">
             <h3 class="panel-title">{{'Messages' | r | xlat}}</h3>
         </div>
         <div class="panel-body">
-            <accountnavigation />
             <p class="alert alert-warning">{{'You have no ' + ('Messages' | rl) + ' yet!' | xlat}}</p>
         </div>
     </div>
@@ -14,7 +14,6 @@
             <h3 class="panel-title">{{'Messages' | r | xlat}}</h3>
         </div>
         <div class="panel-body">
-            <accountnavigation />
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
