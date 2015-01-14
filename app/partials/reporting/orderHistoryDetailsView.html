@@ -3,6 +3,10 @@
         <span class="text-info">{{('Date' | r) + ' ' + ('Submitted' | r) | xlat}}</span>
         <span class="pull-right">{{order.DateSubmitted | date:user.Culture.DateFormat.short}}</span>
     </p>
+    <!--<p ng-show="order.DateSubmitted">
+        <span class="text-info">{{('Date' | r) + ' ' + ('Needed' | r) | xlat}}</span>
+        <span class="pull-right">{{order.OrderFields.Name["Date needed by"].Value | date:user.Culture.DateFormat.short}}</span>
+    </p>-->
     <p>
         <span class="text-info">{{'Status' | r | xlat}}</span>
         <span class="pull-right">{{order.StatusText | r | xlat}}</span>
@@ -25,7 +29,11 @@
     </p>
     <p>
         <span class="text-info">{{('Payment' | r) + ' ' + ('Method' | r) | xlat}}</span>
-        <span class="pull-right">{{order.PaymentMethodText | r | xlat}} <strong ng-show="order.CreditCard.Type">{{':' + order.CreditCard.DisplayName}}</strong> {{order.AmountOnAccount && order.PaymentMethod != 'BudgetAccount' ? "(" + (order.Total - order.AmountOnAccount | currency) + ")" : ""}}</span>
+        <br />
+        <span class="pull-left">{{order.PaymentMethodText | r | xlat}}
+            <strong ng-show="order.CreditCard.Type">{{':' + order.CreditCard.DisplayName}}</strong>
+            {{order.AmountOnAccount && order.PaymentMethod != 'BudgetAccount' ? "(" + (order.Total - order.AmountOnAccount | currency) + ")" : ""}}
+        </span>
     </p>
     <p ng-show="order.AmountOnAccount && order.PaymentMethod != 'BudgetAccount'">
         <span class="text-info"></span>
@@ -39,6 +47,10 @@
     <address ng-show="!order.IsMultipleShip()">
         <span class="text-primary"><strong>{{'Ship to' | r | xlat}}</strong></span><br />
         <div>
+            <!--custom-->
+            <div>{{order.ShipAddress.AddressName}}</div>
+            <div>{{order.ShipAddress.CompanyName}}</div>
+            <!--custom-->
             <span ng-show="order.LineItems[0].ShipFirstName || order.LineItems[0].ShipLastName">{{order.LineItems[0].ShipFirstName}} {{order.LineItems[0].ShipLastName}}</span>
             <span ng-show="!order.LineItems[0].ShipFirstName || !order.LineItems[0].ShipLastName">{{order.ShipAddress.FirstName}} {{order.ShipAddress.LastName}}</span>
         </div>
@@ -50,6 +62,10 @@
     <address ng-show="order.BillAddress">
         <span class="text-primary"><strong>{{'Bill to' | r | xlat}}</strong></span><br />
         <div>
+            <!--custom-->
+            <div>{{order.BillAddress.AddressName}}</div>
+            <div>{{order.BillAddress.CompanyName}}</div>
+            <!--custom-->
             <span ng-show="order.BillFirstName || order.BillLastName">{{order.BillFirstName}} {{order.BillLastName}}</span>
             <span ng-show="!order.BillFirstName || !order.BillLastName">{{order.BillAddress.FirstName}} {{order.BillAddress.LastName}}</span>
         </div>
