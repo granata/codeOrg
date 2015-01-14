@@ -132,18 +132,6 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 			newTotal += item.LineTotal;
 		});
 		$scope.currentOrder.Subtotal = newTotal;
-
-        var newQty = 0;
-        if (!$scope.currentOrder) return newQty;
-        angular.forEach($scope.currentOrder.LineItems, function(item){
-            if(item.Quantity != 0){
-                newQty += +(item.Quantity);
-            }
-
-        });
-        $scope.currentOrder.TotalQty = newQty;
-
-
 	}, true);
 
 	$scope.copyAddressToAll = function() {
