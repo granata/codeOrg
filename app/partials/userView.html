@@ -1,11 +1,6 @@
 <section class="user-view">
-    <div class="hidden-md hidden-lg" ng-class="{'panel panel-default':!user.Permissions.contains('ViewSelfAdmin')}">
-        <div class="panel-heading" ng-show="!user.Permissions.contains('ViewSelfAdmin')">
-            <h3 class="panel-title">{{'My Account' | r | xlat}}</h3>
-        </div>
-        <div ng-class="{'panel-body':!user.Permissions.contains('ViewSelfAdmin')}">
-            <accountnavigation />
-        </div>
+    <div ng-show="user.Type != 'TempCustomer'">
+        <accountnavigation />
     </div>
     <loadingindicator title="{{'Please wait while we save your changes' | r | xlat}}" ng-show="displayLoadingIndicator"/>
     <identifyusermessage ng-show="user.Type == 'TempCustomer'" />
@@ -89,7 +84,6 @@
                 <h3 class="panel-title">{{(user.Type == 'TempCustomer' ? 'Create' : 'My') + ' ' + ('Account' | r) | xlat}}</h3>
             </div>
             <div class="panel-body">
-                <accountnavigation />
                 <div class="col-sm-6 view-form-icon">
                     <div>
                         <label ng-show="user.FirstName">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
