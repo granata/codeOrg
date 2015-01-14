@@ -34,8 +34,11 @@
         <div class="col-md-8 col-md-pull-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title panel-primary">
+                    <!--<h3 class="panel-title panel-primary">
                         {{order.LineItems.length}} {{'Item' + (order.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in this' | rl | xlat:(currentOrder.LineItems.length)}} {{'Order' | rl | xlat}}
+                    </h3>-->
+                    <h3 class="panel-title panel-primary">
+                        {{TotalQty}} {{'Item' + (TotalQty > 1 ? 's' : '') | rl | xlat}} {{'in this' | rl | xlat:(TotalQty)}} {{'Order' | rl | xlat}}
                     </h3>
                 </div>
                 <lineitemhistorygrid />

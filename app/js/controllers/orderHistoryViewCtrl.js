@@ -15,6 +15,19 @@ four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', '
 				}
 			}
 
+            /*cartCount*/
+            $scope.$watch('$scope.order.LineItems', function(newval) {
+                var newQty = 0;
+                if (!$scope.order) return newQty;
+                angular.forEach($scope.order.LineItems, function(item){
+                    if(item.Quantity != 0){
+                        newQty += +(item.Quantity);
+                    }
+                });
+                $scope.TotalQty = newQty;
+            }, true);
+            /*cartCount*/
+
 			if ($scope.order.IsMultipleShip()) {
 				angular.forEach(data.LineItems, function(item) {
 					if (item.ShipAddressID) {
