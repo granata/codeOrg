@@ -91,6 +91,7 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 		if (!$scope.currentOrder.LineItems) {
             $scope.currentOrder.LineItems = [];
         }
+        /*add to cart*/
         var quantity = "0";
 		if($scope.allowAddFromVariantList){
 			angular.forEach($scope.variantLineItems, function(item){
@@ -101,10 +102,13 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 				}
 			});
 		}else{
-			$scope.currentOrder.LineItems.push($scope.LineItem);
+            var lineItem = angular.copy($scope.LineItem);
+			$scope.currentOrder.LineItems.push(lineItem);
 			$scope.currentOrder.Type = $scope.LineItem.PriceSchedule.OrderType;
             quantity = $scope.LineItem.Quantity;
 		}
+        /*add to cart*/
+
 		$scope.addToOrderIndicator = true;
 		//$scope.currentOrder.Type = (!$scope.LineItem.Product.IsVariantLevelInventory && $scope.variantLineItems) ? $scope.variantLineItems[$scope.LineItem.Product.Variants[0].InteropID].PriceSchedule.OrderType : $scope.LineItem.PriceSchedule.OrderType;
 		// shipper rates are not recalcuated when a line item is added. clearing out the shipper to force new selection, like 1.0
