@@ -1,12 +1,16 @@
 <div class="panel panel-default panel-order">
     <div class="panel-heading" ng-class="{'no': cart_billing.$invalid, 'yes': !cart_billing.$invalid, 'open': checkOutSection == 'billing' }">
-        <h3 ng-click="checkOutSection = 'billing'" class="panel-title">
+        <!--<h3 ng-disabled="checkOutSection != 'billing'" class="panel-title">
             <i class="pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
             {{'Billing' | r | xlat}}
-            <i class="pull-right" ng-class="{'fa fa-caret-up': checkOutSection == 'billing', 'fa fa-caret-down': checkOutSection == 'shipping' || checkOutSection == 'order' }"></i>
+            <i class="pull-right" ng-class="{'fa fa-caret-up': checkOutSection == 'billing', 'fa fa-caret-down': checkOutSection != 'billing' }"></i>
+        </h3>-->
+        <h3 class="panel-title panel-primary">
+            <i class="pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
+            {{'Billing' | r | xlat}}
         </h3>
     </div>
-    <div collapse="checkOutSection != 'billing'" class="panel-body">
+    <div class="panel-body collapse" ng-disabled="cart_shipping.$invalid" collapse="checkOutSection != 'billing'">
         <div>
             <billingmessage />
         </div>

@@ -358,6 +358,13 @@ h4.text-primary span.subtotal {
     min-height:50px;
 }
 
+.product-detail-default .btn-lg {
+    font-size: 1em;
+    min-height: 50px;
+    padding: 1.165em;
+    text-transform: uppercase;
+}
+
 /*.product-detail-default .panel {
     border: medium none;
     box-shadow: none;

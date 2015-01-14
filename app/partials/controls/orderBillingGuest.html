@@ -8,16 +8,9 @@
         <h3 class="panel-title panel-primary">
             <i class="pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
             {{'Billing' | r | xlat}}
-            <!--<a class="pull-right" ng-show="checkOutSection == 'shipping'" ng-click="checkOutSection = 'shipping'">
-                <i ng-class="{'': checkOutSection == 'shipping', 'fa fa-edit': checkOutSection == 'billing' }"></i>
-            </a>
-            <a class="pull-right" ng-show="checkOutSection == 'shipping' && !cart_shipping.$invalid" ng-click="checkOutSection = 'billing'">
-                <i ng-class="{'fa fa-times': checkOutSection == 'shipping', '': checkOutSection == 'billing' }"></i>
-            </a>-->
         </h3>
     </div>
     <div class="panel-body collapse" ng-disabled="cart_shipping.$invalid" collapse="checkOutSection != 'billing'">
-        <!--<div class="panel-body" ng-show="currentOrder.checkOutSection == 'options'">-->
         <div>
             <billingmessage />
         </div>
