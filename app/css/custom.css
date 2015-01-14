@@ -418,6 +418,11 @@ float:left;
 
 
 /*lightbox*/
+.modal-body {
+    background: none repeat scroll 0 0;
+    background-color: #fff !important;
+}
+
 .galleryThumbs {
     width:100%;
     margin:0px auto;
