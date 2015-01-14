@@ -391,9 +391,9 @@ h4.text-primary span.subtotal {
 float:left;
 }
 
-/*.panel-order .panel-title i {
+.panel-order .btn-sm {
     min-width:60px;
-}*/
+}
 
 /*contactus*/
 .contact span {

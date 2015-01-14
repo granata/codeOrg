@@ -21,13 +21,11 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
     $scope.$watch('currentOrder.ShipAddressID', function() {
         if ($scope.currentOrder.ShipAddressID && $scope.currentOrder.ShipperID) {
             $scope.checkOutSection = 'billing';
-            $scope.setPanel = 'billing';
         }
     });
     $scope.$watch('currentOrder.ShipperID', function() {
         if ($scope.currentOrder.ShipAddressID && $scope.currentOrder.ShipperID) {
             $scope.checkOutSection = 'billing';
-            $scope.setPanel = 'billing';
         }
     });
     /*PW-13837 RP - Code.org - Make it so the billing section is disabled (can't open it) until... */
