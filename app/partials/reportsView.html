@@ -17,7 +17,9 @@
                     </button>
                     <ul class="dropdown-menu pull-right" role="menu">
                         <li ng-repeat="(key,value) in Reports.AvailableTypes">
-                            <a role="presentation" tabindex="-1" href="report/{{key}}">{{value | xlat}}</a>
+                            <!--<a role="presentation" tabindex="-1" href="report/{{key}}">{{value | xlat}}</a>-->
+                            <!--hide the shipments report-->
+                            <a ng-hide="{{key == 'Shipment'}}" role="presentation" tabindex="-1" href="report/{{key}}">{{value | xlat}}</a>
                         </li>
                     </ul>
                 </div>
