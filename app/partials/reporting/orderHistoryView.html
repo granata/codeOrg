@@ -6,7 +6,7 @@
         </div>
         <nav class="nav">
             <ul>
-                <li><span class="text-primary">{{(order.Type) + ' ' + ('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span></li>
+                <li><span class="text-primary">{{('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span></li>
                 <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}"></i></span></li>
             </ul>
         </nav>

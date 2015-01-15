@@ -98,7 +98,8 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">{{'Cancel' | r | xlat}}</button>
             <button ng-if="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')" class="btn btn-primary pull-right" type="submit" ng-disabled="addressEdit.$invalid" id="451_btn_user">
                 <i ng-show="addressEdit.$invalid" class="fa fa-warning"></i>
-                {{'Save' | r | xlat}} {{address.AddressName}}
+                <!--{{'Save' | r | xlat}} {{address.AddressName}}-->
+                {{'Continue' | r | xlat}}
             </button>
         </div>
     </form>
