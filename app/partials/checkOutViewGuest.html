@@ -20,12 +20,12 @@
         </ul>
     </div>
     <div class="col-md-7 col-md-pull-5 col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
-
         <!--<orderdetails ng-show="hasOrderConfig" />-->
         <ordershippingguest />
         <orderbillingguest />
         <orderapprovals ng-show="currentOrder.Approvals" />
     </div>
+    <!--<div class="navbar-fixed-bottom">-->
     <div class="row col-lg-12">
         <div class="view-response-message alert-success text-center" alert-show="actionMessage">
             <p>{{actionMessage | r | xlat}}</p>
