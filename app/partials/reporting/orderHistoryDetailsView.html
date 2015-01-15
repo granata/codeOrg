@@ -3,10 +3,10 @@
         <span class="text-info">{{('Date' | r) + ' ' + ('Submitted' | r) | xlat}}</span>
         <span class="pull-right">{{order.DateSubmitted | date:user.Culture.DateFormat.short}}</span>
     </p>
-    <!--<p ng-show="order.DateSubmitted">
+    <p>
         <span class="text-info">{{('Date' | r) + ' ' + ('Needed' | r) | xlat}}</span>
         <span class="pull-right">{{order.OrderFields.Name["Date needed by"].Value | date:user.Culture.DateFormat.short}}</span>
-    </p>-->
+    </p>
     <p>
         <span class="text-info">{{'Status' | r | xlat}}</span>
         <span class="pull-right">{{order.StatusText | r | xlat}}</span>
