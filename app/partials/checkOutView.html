@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div class="col-md-7 col-md-pull-5 col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
-        <orderdetails ng-show="hasOrderConfig" && user.Groups[0].Name == 'Staff' />
+        <!--<orderdetails ng-show="hasOrderConfig" />--> <!--currently, we've moved all order fields to the billing section-->
         <ordershipping />
         <orderbilling />
         <orderapprovals ng-show="currentOrder.Approvals" />
