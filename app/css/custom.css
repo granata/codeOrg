@@ -4,7 +4,7 @@ Theme name: codeOrg
 Version: 1.0
 Template:
 Created: 1/9/15
-Last Updated: 1/15/15
+Last Updated: 1/16/15
 Author: Jen Rasmussen, Four51
 
 Colors:
@@ -25,6 +25,11 @@ http://www.typography.com/fonts/gotham/
 
 /*fix the editor.css file, its a mess*/
 
+.user-view form .panel-body,
+.address-view .panel-body {
+    background-color:#f5f5f5;
+}
+
 .text-primary {
     color: #696969;
 }
@@ -43,6 +48,25 @@ http://www.typography.com/fonts/gotham/
     border:1px solid #dddddd;
     text-transform: uppercase;
 
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary.active[disabled],
+fieldset[disabled] .btn-primary.active {
+    background-color: #f5f5f5;
+    border:1px solid #dddddd;
 }
 
 .btn-default:hover,
@@ -78,7 +102,6 @@ http://www.typography.com/fonts/gotham/
     border-color: #dddddd;
     color:#00b2c0;
 }
-
 
 .btn-danger.disabled,
 .btn-danger[disabled],
@@ -516,6 +539,10 @@ h4.text-primary span.subtotal {
     min-height:50px;
 }
 
+.product-detail-default h3 {
+    color:#7665a0;
+}
+
 .product-detail-default .btn-lg {
     font-size: 1em;
     min-height: 50px;
@@ -567,8 +594,16 @@ h4.text-primary span.subtotal {
 float:left;
 }
 
-.panel-order .btn-sm {
-    min-width:60px;
+.order-search-view .panel-body  {
+    background-color:#f5f5f5;
+}
+
+.order-search-view .order-types .panel-body  {
+    background-color:#fff;
+}
+
+.order-search-view .form-inline .form-control {
+    width: 100%;
 }
 
 /*contactus*/

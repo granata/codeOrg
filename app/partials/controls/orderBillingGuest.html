@@ -14,10 +14,19 @@
         <billingmessage />
         <!--<div ng-show="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">-->
         <div ng-show="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
-            <addressinputguest address='billaddress' user='user'></addressinputguest>
+            <div class="row">
+                <div class="checkbox pull-left">
+                    <label>
+                        <input name="sameAsShipping" type="checkbox" ng-model="currentOrder.copyShipAddress" ng-change="resetBilling()"
+                               ng-disabled="!currentOrder.ShipAddressID" />
+                        {{'Same as Shipping Address' | r | xlat}}
+                    </label>
+                </div>
+            </div>
+            <addressinputguest ng-hide="currentOrder.copyShipAddress" address='billaddress' user='user'></addressinputguest>
         </div>
         <!--<div ng-hide="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">-->
-        <div ng-hide="billaddressform || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+        <div ng-hide="billaddressform && !currentOrder.copyShipAddress || (!currentOrder.BillAddressID && billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
             <form name="cart_billing" novalidate="">
                 <div>
                     <div class="row" ng-hide="billaddressform">
@@ -28,7 +37,7 @@
                                 {{'Same as Shipping Address' | r | xlat}}
                             </label>
                         </div>
-                        <button class="btn btn-info pull-right" type="button"
+                        <button class="btn btn-default pull-right" type="button"
                                 ng-hide="(billaddressform || (!addressform && (addresses | filter:{IsBilling:true}).length == 0) || !user.Permissions.contains('CreateBillToAddress'))"
                                 ng-click="billaddressform = true" ng-show="!currentOrder.copyShipAddress">
                             {{('New' | r) + ' ' +  ('Address' | r) | xlat}}
@@ -68,42 +77,12 @@
                     </div>
                 </div>
                 <!--custom-->
-                <div class="row" ng-show="user.Type == 'Customer' && user.Groups[0].Name == 'Staff'">
-                    <div class="col-xs-12 col-md-6">
-                        <div ng-repeat="field in currentOrder.OrderFields | filter:{Name: 'Date needed by'}">
-                            <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
-                            <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <!--<div ng-repeat="field in currentOrder.OrderFields | filter:{Name: 'Code.org Cost Center'}">
-                            <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
-                            <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
-                        </div>-->
-                        <div class="view-form-icon">
-                            <div>
-                                <label>{{'Cost Center' | r | xlat}}</label>
-                                <select class="form-control" required ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="currentOrder.CostCenter"><option value=""></option></select>
-                                <input class="form-control" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="currentOrder.CostCenter" type='text' required placeholder="{{'Cost Center' | r | xlat}}" />
-                                <span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{currentOrder.CostCenter}}</span>
-                                <i class="fa fa-arrow-down" ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" ng-show="user.Type != 'Customer'">
+                <div class="row">
                     <div class="col-xs-12">
                         <div ng-repeat="field in currentOrder.OrderFields | filter: { Name: 'Code.org Guest Email'}">
                             <customtextfield customfield="field" ng-if="field.ControlType == 'Text'" ng-required="field.IsRequired" />
                             <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection'" ng-required="field.IsRequired" />
                         </div>
-                    </div>
-                </div>
-                <div class="view-form-icon" ng-if="user.Permissions.contains('Comments') && user.Type == 'Customer' && user.Groups[0].Name == 'Staff'">
-                    <div>
-                        <label ng-show="currentOrder.Comments">{{'Comments' | r | xlat}}:</label>
-                        <textarea class="form-control" rows="5" cols="100" ng-model="currentOrder.Comments" ng-attr-placeholder="{{'Comments' | r | xlat}}..." />
-                        <i class="fa fa-edit"></i>
                     </div>
                 </div>
                 <br />

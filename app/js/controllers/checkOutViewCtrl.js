@@ -28,6 +28,11 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
             $scope.checkOutSection = 'billing';
         }
     });
+    $scope.$watch('cart_billing.$invalid', function() {
+        if (!$scope.cart_billing.$invalid && $scope.currentOrder.Approvals) {
+            $scope.checkOutSection = 'approval';
+        }
+    });
     /*PW-13837 RP - Code.org - Make it so the billing section is disabled (can't open it) until... */
 
     function submitOrder() {

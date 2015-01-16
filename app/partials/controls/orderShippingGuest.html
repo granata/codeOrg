@@ -34,7 +34,7 @@
                                 <i ng-class="{'fa fa-check': currentOrder.IsMultipleShip() }"></i>
                                 {{'Multiple ' + ('Addresses' | r) | xlat}}
                             </button>
-                             <button class="btn btn-info pull-right" type="button"
+                             <button class="btn btn-default pull-right" type="button"
                                      ng-hide="(shipaddressform || (!shipaddressform && !shipaddresses) || !user.Permissions.contains('CreateShipToAddress'))" ng-click="shipaddressform = true" tabindex="-1">
                                  {{'New ' + ('Address' | r) | xlat}}
                              </button>

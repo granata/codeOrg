@@ -31,7 +31,7 @@
             <div class="col-xs-6" ng-if="currentOrder.RequireCVN">
                 <input id="cvn" class="form-control" ng-model="currentOrder.CreditCard.CVN" name="cvnNumber"
                        ng-required="currentOrder.PaymentMethod == 'CreditCard' && !currentOrder.CreditCardID"
-                       type="text" placeholder="{{'CVN' | r | xlat}}" ng-maxlength="4" autocomplete="off" />
+                       type="text" placeholder="{{'CVN' | r | xlat}}" ng-minlength="3" ng-maxlength="4" autocomplete="off" />
                 <i class="fa fa-lock"></i>
             </div>
         </div>
