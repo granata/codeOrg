@@ -23,6 +23,146 @@ http://www.typography.com/fonts/gotham/
 <link href='//cloud.typography.com/7425452/678642/css/fonts.css' media='all' rel='stylesheet' type='text/css'>
 */
 
+/*fix the editor.css file, its a mess*/
+
+.alert-info {
+    background-color:#00b2c0;
+    border-color: #00b2c0;
+    color: #fff;
+}
+
+.btn-default,
+.btn-success,
+.btn-primary {
+    background-color: #f5f5f5;
+    color:#00b2c0;
+    border:1px solid #dddddd;
+    text-transform: uppercase;
+
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus{
+    background-color: #00b2c0;
+    border-color: #00b2c0;
+    color:#f5f5f5;
+}
+
+.btn-danger {
+    background-color:#ffa400;
+    border: medium none #ffa400;
+    color:#fff;
+}
+
+.btn-danger.disabled,
+.btn-danger[disabled] {
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+    color:#00b2c0;
+}
+
+
+.btn-danger.disabled,
+.btn-danger[disabled],
+fieldset[disabled] .btn-danger,
+.btn-danger.disabled:hover,
+.btn-danger[disabled]:hover,
+fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus,
+.btn-danger[disabled]:focus,
+fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled:active,
+.btn-danger[disabled]:active,
+fieldset[disabled] .btn-danger:active,
+.btn-danger.disabled.active,
+.btn-danger.active[disabled],
+fieldset[disabled] .btn-danger.active {
+    background-color: #00b2c0;
+    border-color: #00b2c0;
+    color:#f5f5f5;
+}
+
+form[name="cart"] .btn-success {
+    background-color: #19b9c6;
+    border-color: #19b9c6;
+    color:#fff;
+}
+
+form[name="cart"] .btn-primary {
+    background-color: #7665a0;
+    border-color: #7665a0;
+    color:#fff;
+}
+
+/*form[name="cart"] .btn-primary:hover,
+form[name="cart"] .btn-primary:active,
+form[name="cart"] .btn-primary:focus{
+    background-color: #8374a9;
+    border-color: #8374a9;
+}*/
+
+form[name="cart"] .btn-success:hover,
+form[name="cart"] .btn-success:active,
+form[name="cart"] .btn-success:focus{
+    background-color: #00b2c0;
+    border-color: #00b2c0;
+}
+
+.view-form-icon .quantity div input {
+    color: #00b2c0;
+}
+
+.panel-default .alert-warning {
+    background-color: #fff;
+    border-color: #fff;
+    color: #ffa400;
+}
+
+.badge {
+    background-color: #ffa400;
+}
+
+.panel-category-list .well,
+.panel-product-list .well {
+    border:0 none;
+}
+
+.panel-product-list .well .panel-body {
+    padding:0 15px 15px 15px;
+}
+
+.panel-default .panel-heading,
+.panel-search .panel-heading,
+.panel-category-list .panel-heading,
+.panel-order {
+    background-color: #f5f5f5;
+}
+
+.panel .panel-heading .panel-title  {
+    text-transform:uppercase;
+}
+
+.panel-footer {
+    background-color: #f5f5f5;
+}
+
+/**/
+.thumbnail img {
+    max-height: 150px;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+}
+/**/
+
 body {
     /*font-family: 'Gotham A','Gotham B',sans-serif;*/
     font-family: 'Montserrat', sans-serif;
@@ -52,10 +192,6 @@ li.cart a i.fa-shopping-cart {
     text-align: center;
 }
 
-.badge {
-    background-color:#ff8a00;
-}
-
 @media (max-width:767px) {
     li.cart a .badge {
         border: 1px solid #fff;
@@ -65,7 +201,6 @@ li.cart a i.fa-shopping-cart {
         text-align: center;
     }
 }
-
 
 .navbar-fixed-top {
     animation-duration: 0s;

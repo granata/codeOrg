@@ -70,20 +70,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-xs-6">
-                                        <div ng-if="!(user.Permissions.contains('HidePricing'))">
-                                            <small>{{'Total' | r | xlat}}</small>
-                                            <h2 class="text-success">
-                                                {{item.LineTotal | culturecurrency}}
-                                            </h2>
-                                        </div>
-                                    </div>
                                     <div class="col-xs-6" ng-if="!(user.Permissions.contains('HidePricing'))">
                                         <p>
                                             <small>{{'Unit Price' | r | xlat}}</small>
                                             <br/>
                                             {{item.UnitPrice | culturecurrency}}
                                         </p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div ng-if="!(user.Permissions.contains('HidePricing'))">
+                                            <small>{{'Total' | r | xlat}}</small>
+                                            <h4 class="text-success">
+                                                {{item.LineTotal | culturecurrency}}
+                                            </h4>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
@@ -172,7 +172,7 @@
                     <!--guestCheckoutbuttons-->
                     <div class="col-md-12 row">
                         <div class="col-md-6">
-                            <btn class="btn btn-primary" redirect="catalog" ng-click="saveChanges()">Continue Shopping</btn>
+                            <btn class="btn btn-default" redirect="catalog" ng-click="saveChanges()">Continue Shopping</btn>
                         </div>
                         <div class="col-md-6 text-right" ng-show="Four51User.currentUser.Email == ''">
                             <btn class="btn btn-custom" redirect="checkoutGuest">Checkout As Guest</a>
