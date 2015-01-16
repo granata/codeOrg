@@ -25,6 +25,10 @@ http://www.typography.com/fonts/gotham/
 
 /*fix the editor.css file, its a mess*/
 
+.text-primary {
+    color: #696969;
+}
+
 .alert-info {
     background-color:#00b2c0;
     border-color: #00b2c0;
@@ -59,6 +63,13 @@ http://www.typography.com/fonts/gotham/
     background-color:#ffa400;
     border: medium none #ffa400;
     color:#fff;
+}
+
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus {
+    background-color: #ff8a00;
+    border-color: #ff8a00;
 }
 
 .btn-danger.disabled,
@@ -123,6 +134,7 @@ form[name="cart"] .btn-success:focus{
     background-color: #fff;
     border-color: #fff;
     color: #ffa400;
+    text-align: center;
 }
 
 .badge {
