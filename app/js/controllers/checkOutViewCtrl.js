@@ -29,7 +29,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
         }
     });
     $scope.$watch('cart_billing.$invalid', function() {
-        if (!$scope.cart_billing.$invalid && $scope.currentOrder.Approvals) {
+        if (!$scope.cart_billing.$invalid && $scope.currentOrder.Approvals[index] !== null) {
             $scope.checkOutSection = 'approval';
         }
     });
