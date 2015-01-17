@@ -4,7 +4,7 @@ Theme name: codeOrg
 Version: 1.0
 Template:
 Created: 1/9/15
-Last Updated: 1/16/15
+Last Updated: 1/17/15
 Author: Jen Rasmussen, Four51
 
 Colors:
@@ -25,6 +25,138 @@ http://www.typography.com/fonts/gotham/
 
 /*fix the editor.css file, its a mess*/
 
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:90px;
+    width:100%;
+    background-color:#7665a0;
+    z-index: 1050;
+    color:#fff;
+}
+
+.fixed-footer div {
+    max-width:980px;
+    margin:0 auto;
+}
+
+.fixed-footer .row {
+    line-height:1.55em;
+}
+
+.fixed-footer .row {
+    position:relative;
+    top:20px;
+    left:0px;
+}
+
+.fixed-footer ul li {
+    float:left;
+    padding:0 11px;
+    font-size:0.975em;
+    word-spacing:1.1em;
+}
+
+@media (max-width:1200px) {
+
+    .fixed-footer ul li {
+        float:left;
+        padding:0 0.5em;
+        font-size:0.865em;
+    }
+}
+
+.fixed-footer ul li:nth-of-type(1) {
+    padding:0 11px 0 0;
+}
+
+.fixed-footer a {
+    color:#fff;
+    font-weight:normal;
+    text-decoration:none;
+}
+
+.fixed-footer a:hover {
+    text-decoration:none;
+}
+
+.fixed-footer small,
+.fixed-footer .small {
+    font-size: 85%;
+}
+
+.fixed-footer .dim {
+    opacity: 0.5;
+}
+
+/* the rest of the styling */
+
+
+
+.panel-product-list ul li.inline h3 {
+    min-height: 120px;
+}
+
+/*BUTTONS*/
+.checkout-buttons .btn.btn-lg {
+    min-width: 40%;
+}
+
+.checkout-buttons .btn-warning.disabled,
+.checkout-buttons .btn-warning[disabled],
+fieldset[disabled] .checkout-buttons .btn-warning,
+.checkout-buttons .btn-warning.disabled:hover,
+.checkout-buttons .btn-warning[disabled]:hover,
+fieldset[disabled] .checkout-buttons .btn-warning:hover,
+.checkout-buttons .btn-warning.disabled:focus,
+.checkout-buttons .btn-warning[disabled]:focus,
+fieldset[disabled] .checkout-buttons .btn-warning:focus,
+.checkout-buttons .btn-warning.disabled:active,
+.checkout-buttons .btn-warning[disabled]:active,
+fieldset[disabled] .checkout-buttons .btn-warning:active,
+.checkout-buttons .btn-warning.disabled.active,
+.checkout-buttons .btn-warning.active[disabled],
+fieldset[disabled] .checkout-buttons .btn-warning.active {
+    background-color:#00b2c0;
+    border-color: #00b2c0;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.65;
+    pointer-events: none;
+    text-transform: uppercase;
+    font-size:16px;
+}
+
+.btn-warning.disabled,
+.btn-warning[disabled],
+fieldset[disabled] .btn-warning,
+.btn-warning.disabled:hover,
+.btn-warning[disabled]:hover,
+fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus,
+.btn-warning[disabled]:focus,
+fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled:active,
+.btn-warning[disabled]:active,
+fieldset[disabled] .btn-warning:active,
+.btn-warning.disabled.active,
+.btn-warning.active[disabled],
+fieldset[disabled] .btn-warning.active {
+    background-color:#ffa400;
+    border-color: #ff8a00;
+    opacity: 1;
+}
+
+.panel-order .panel-heading.no i:first-of-type {
+    color: #ffa400;
+}
+
+.panel-order .panel-heading.yes i:first-of-type {
+    color: #00b2c0;
+}
+
 .user-view form .panel-body,
 .address-view .panel-body {
     background-color:#f5f5f5;
@@ -34,7 +166,7 @@ http://www.typography.com/fonts/gotham/
     color: #696969;
 }
 
-.alert-info {
+.alert-info, .alert-success {
     background-color:#00b2c0;
     border-color: #00b2c0;
     color: #fff;
@@ -65,8 +197,18 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary.active[disabled],
 fieldset[disabled] .btn-primary.active {
-    background-color: #f5f5f5;
-    border:1px solid #dddddd;
+    background-color:#00b2c0;
+    border-color: #00b2c0;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.user-view .btn-primary {
+    background-color:#00b2c0;
+    border-color: #00b2c0;
+    color: #fff;
 }
 
 .btn-default:hover,
@@ -83,7 +225,7 @@ fieldset[disabled] .btn-primary.active {
     color:#f5f5f5;
 }
 
-.btn-danger {
+/*.btn-danger {
     background-color:#ffa400;
     border: medium none #ffa400;
     color:#fff;
@@ -121,7 +263,7 @@ fieldset[disabled] .btn-danger.active {
     background-color: #00b2c0;
     border-color: #00b2c0;
     color:#f5f5f5;
-}
+}*/
 
 form[name="cart"] .btn-success {
     background-color: #19b9c6;
@@ -177,7 +319,13 @@ form[name="cart"] .btn-success:focus{
 .panel-search .panel-heading,
 .panel-category-list .panel-heading,
 .panel-order {
+    /*background-color: #f5f5f5;*/
+}
+
+.panel-default .panel-heading, .panel-search .panel-heading {
     background-color: #f5f5f5;
+    border-color:#dddddd;
+    border-radius: 4px 4px 0 0;
 }
 
 .panel .panel-heading .panel-title  {
@@ -197,7 +345,6 @@ form[name="cart"] .btn-success:focus{
     border: 1px solid #ddd;
 }
 /**/
-
 body {
     /*font-family: 'Gotham A','Gotham B',sans-serif;*/
     font-family: 'Montserrat', sans-serif;
@@ -461,10 +608,6 @@ h2 {
     line-height: 1.2em;
 }
 
-.panel-category-list h5 {
-    text-align:center;
-}
-
 /*panel-nav*/
 .panel-nav ul,
 .panel-nav .panel-category-list:not(.no-panels) > ul,
@@ -515,16 +658,12 @@ h2 {
     color: #ff8a00;
 }
 
-/*.panel-nav ul li ul li {
-    border-bottom: 1px solid #00b2c0;
-    border-top: none;
-    position:relative;
-    top:5px;
-    left:25px;
-    padding:5px;
-}*/
 
 /*products*/
+.panel-category-list h5 {
+    text-align:center;
+}
+
 h4.text-primary span.subtotal {
     font-weight:bold;
     padding-right:15px;
@@ -535,6 +674,10 @@ h4.text-primary span.subtotal {
 }
 
 /*product detail template*/
+.product-detail-default .panel-footer {
+    background-color:#fff;
+}
+
 .product-detail-default .btn-lg {
     min-height:50px;
 }
@@ -552,7 +695,7 @@ h4.text-primary span.subtotal {
 
 .product-detail-default .panel {
     border: 0 none;
-    box-shadow: 0 none;
+    box-shadow:none;
     margin-bottom: 0px;
 }
 
@@ -567,23 +710,6 @@ h4.text-primary span.subtotal {
 .product-detail-default .panel-body {
     padding: 15px 0;
 }
-
-/*.product-detail-default .panel {
-    border: medium none;
-    box-shadow: none;
-    padding:0;
-}
-.product-detail-default .panel p {
-    padding:0;
-    margin: 0;
-}
-.product-detail-default .panel-body {
-    padding:0;
-}
-.product-detail-default .panel-footer {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border-top: medium none;
-}*/
 
 /*checkout*/
 .addressName {

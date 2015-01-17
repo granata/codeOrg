@@ -2,22 +2,18 @@
     <loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
     <div class="col-md-4 col-md-offset-1 col-md-push-7 col-collapse">
         <ordersummary />
-        <ul class="nav nav-justified">
-            <li>
-                <button class="btn btn-danger btn-lg" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
-                    <small ng-show="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
-                    <small ng-show="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
-                </button>
-            </li>
-            <li>
-                <button class="btn btn-lg"
-                        ng-class="{'btn-warning': cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid, 'btn-success': !cart_shipping.$invalid && !cart_order.$invalid && !cart_billing.$invalid }"
-                        ng-click="submitOrder()" ng-disabled="cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid">
-                    <i ng-show="cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid" class="fa fa-warning"></i>
-                    <span>{{('Submit' | r) + ' ' + ('Order' | r) | xlat}}</span>
-                </button>
-            </li>
-        </ul>
+        <div class="checkout-buttons">
+            <button class="btn btn-danger btn-lg" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
+                <small ng-show="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
+                <small ng-show="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
+            </button>
+            <button class="btn btn-lg"
+                    ng-class="{'btn-warning': cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid, 'btn-success': !cart_shipping.$invalid && !cart_order.$invalid && !cart_billing.$invalid }"
+                    ng-click="submitOrder()" ng-disabled="cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid">
+                <i ng-show="cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid" class="fa fa-warning"></i>
+                <span>{{('Submit' | r) + ' ' + ('Order' | r) | xlat}}</span>
+            </button>
+        </div>
     </div>
     <div class="col-md-7 col-md-pull-5 col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
         <!--<orderdetails ng-show="hasOrderConfig" />--> <!--currently, we've moved all order fields to the billing section-->
