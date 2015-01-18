@@ -25,6 +25,10 @@ http://www.typography.com/fonts/gotham/
 
 /*fix the editor.css file, its a mess*/
 
+#content {
+    padding-bottom:100px;
+}
+
 .fixed-footer {
     position: fixed;
     bottom: 0;
@@ -35,6 +39,7 @@ http://www.typography.com/fonts/gotham/
     background-color:#7665a0;
     z-index: 1050;
     color:#fff;
+    font-size:0.975em;
 }
 
 .fixed-footer div {
@@ -50,21 +55,31 @@ http://www.typography.com/fonts/gotham/
     position:relative;
     top:20px;
     left:0px;
+    max-width:100%;
 }
 
 .fixed-footer ul li {
     float:left;
     padding:0 11px;
-    font-size:0.975em;
-    word-spacing:1.1em;
+    word-spacing: 0.25em;
 }
 
-@media (max-width:1200px) {
+@media (max-width:768px) {
+
+    .fixed-footer {
+        font-size:0.775em;
+    }
 
     .fixed-footer ul li {
         float:left;
         padding:0 0.5em;
-        font-size:0.865em;
+    }
+}
+
+@media (max-width:320px) {
+
+    .fixed-footer ul  {
+        font-size:0.725em;
     }
 }
 
@@ -91,12 +106,21 @@ http://www.typography.com/fonts/gotham/
     opacity: 0.5;
 }
 
-/* the rest of the styling */
-
-
+.panel-product-list ul li.inline .well .panel-body div {
+    min-height: 50px;
+}
 
 .panel-product-list ul li.inline h3 {
-    min-height: 120px;
+    min-height: 80px;
+    font-size: 18px;
+}
+
+.panel-product-list ul li.inline .backorder {
+    background-color:#7665a0;
+    color:#fff;
+    font-style: italic;
+    width:100%;
+    padding:3px 6px;
 }
 
 /*BUTTONS*/
@@ -159,7 +183,7 @@ fieldset[disabled] .btn-warning.active {
 
 .user-view form .panel-body,
 .address-view .panel-body {
-    background-color:#f5f5f5;
+    /*background-color:#f5f5f5;*/
 }
 
 .text-primary {
@@ -170,6 +194,7 @@ fieldset[disabled] .btn-warning.active {
     background-color:#00b2c0;
     border-color: #00b2c0;
     color: #fff;
+    border-radius:6px;
 }
 
 .btn-default,
@@ -721,7 +746,7 @@ float:left;
 }
 
 .order-search-view .panel-body  {
-    background-color:#f5f5f5;
+    /*background-color:#f5f5f5;*/
 }
 
 .order-search-view .order-types .panel-body  {

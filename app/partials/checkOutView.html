@@ -2,7 +2,7 @@
     <loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
     <div class="col-md-4 col-md-offset-1 col-md-push-7 col-collapse">
         <ordersummary />
-        <div class="checkout-buttons">
+        <div class="col-xs-12 checkout-buttons">
             <button class="btn btn-danger btn-lg" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
                 <small ng-show="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
                 <small ng-show="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>

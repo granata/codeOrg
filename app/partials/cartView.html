@@ -180,7 +180,35 @@
                     </div>
                     <!--guestCheckoutbuttons-->
                 </div>
-            </div>
+            </div><!--.panel-->
+            <div class="row">
+                <!--custom-->
+                <ul>
+                    <li class="col-lg-4"><!--add .col-lg-4-->
+                        <button type="button" class="btn btn-danger btn-block" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
+                            <small ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
+                            <small ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
+                        </button>
+                    </li>
+                    <li class="col-lg-4"><!--add .col-lg-4-->
+                        <button type="submit" class="btn btn-primary btn-block" ng-click="saveChanges()">
+                            <loadingindicator  ng-show="displayLoadingIndicator" />
+                            <small>{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</small>
+                        </button>
+                    </li>
+                    <li class="col-lg-4"><!--add .col-lg-4-->
+                        <!--<button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
+                            <i ng-show="cart.$invalid" class="fa fa-warning"></i>
+                            <span>{{'Check Out' | r | xlat}} {{window.outerWidth}}</span>
+                        </button>-->
+                        <button type="button" class="btn btn-block" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
+                            <i ng-show="cart.$invalid" class="fa fa-warning"></i>
+                            <span ng-show="Four51User.currentUser.Email == ''">{{('Check Out' | r) + ' / ' + ('Login' | r) | xlat}} {{window.outerWidth}}</span>
+                            <span ng-show="!Four51User.currentUser.Email == ''">{{('Check Out' | r) | xlat}} {{window.outerWidth}}</span>
+                        </button>
+                    </li>
+                </ul>
+            </div><!--custom-->
             <!--<div class="navbar-fixed-bottom">-->
             <div class="row">
                 <div class="alert-warning text-center" style="padding: 10px;" ng-if="currentOrder.RepeatError">
@@ -217,35 +245,6 @@
                     </ul>
                 </div>
             <!--custom-->
-            </div>
-            <div class="row">
-            <!--custom-->
-                <ul>
-                    <li class="col-lg-4"><!--add .col-lg-4-->
-                        <button type="button" class="btn btn-danger btn-block" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
-                            <small ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
-                            <small ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
-                        </button>
-                    </li>
-                    <li class="col-lg-4"><!--add .col-lg-4-->
-                        <button type="submit" class="btn btn-primary btn-block" ng-click="saveChanges()">
-                            <loadingindicator  ng-show="displayLoadingIndicator" />
-                            <small>{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</small>
-                        </button>
-                    </li>
-                    <li class="col-lg-4"><!--add .col-lg-4-->
-                        <!--<button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
-                            <i ng-show="cart.$invalid" class="fa fa-warning"></i>
-                            <span>{{'Check Out' | r | xlat}} {{window.outerWidth}}</span>
-                        </button>-->
-                        <button type="button" class="btn btn-block" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
-                            <i ng-show="cart.$invalid" class="fa fa-warning"></i>
-                            <span ng-show="Four51User.currentUser.Email == ''">{{('Check Out' | r) + ' / ' + ('Login' | r) | xlat}} {{window.outerWidth}}</span>
-                            <span ng-show="!Four51User.currentUser.Email == ''">{{('Check Out' | r) | xlat}} {{window.outerWidth}}</span>
-                        </button>
-                    </li>
-                </ul>
-            </div><!--custom-->
             </div>
         </form>
     </div>
