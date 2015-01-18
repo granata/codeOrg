@@ -7,7 +7,7 @@
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="login_existing" ng-submit="loginExisting()" ng-if="user.Type == 'TempCustomer'">
 		<div class="panel panel-default" id="user_form">
 			<div class="panel-heading">
-				<h3 class="panel-title">{{('Logon' | r) + ' ' + ('as existing user' | r) | xlat}}</h3>
+				<h3 class="panel-title">{{'Login' | r | xlat}}</h3>
 			</div>
 			<div class="panel-body">
                 <div class="col-md-6 col-md-offset-3">
@@ -16,7 +16,7 @@
                 </div>
 			</div>
 			<div class="panel-footer">
-				<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_existing.$invalid" id="451_btn_login_existing" value="{{'Logon' | r | xlat}}" />
+				<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_existing.$invalid" id="451_btn_login_existing" value="{{'Login' | r | xlat}}" />
 				<inlineerror ng-show="loginAsExistingError" title="{{loginAsExistingError}}" />
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 		<div ng-show="!enterResetToken" class="panel panel-default">
 			<loadingindicator ng-show="emailResetLoadingIndicator" title="{{'Please wait while we email your verification code' | r | xlat}}" />
 			<div class="panel-heading">
-				<h3 class="panel-title">{{'Lost login information' | r | xlat}}</h3>
+				<h3 class="panel-title">{{'Forgot your Password?' | r | xlat}}</h3>
 			</div>
 			<div class="panel-body">
 
@@ -48,7 +48,7 @@
 			<div class="panel panel-default" ng-show="enterResetToken">
 				<loadingindicator ng-show="emailResetLoadingIndicator" title="{{'Please wait while we reset your password' | r | xlat}}" />
 				<div class="panel-heading">
-					<h3 class="panel-title">{{'Lost login information' | r | xlat}}</h3>
+					<h3 class="panel-title">{{'Forgot your Password?' | r | xlat}}</h3>
 				</div>
 				<div class="panel-body">
 					<p class="alert-warning">{{'An email was sent with your username and verification code.' | r | xlat}}</p>
@@ -81,7 +81,8 @@
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="user_form" ng-submit="save()">
         <div class="panel panel-default" id="user_form">
             <div class="panel-heading">
-                <h3 class="panel-title">{{(user.Type == 'TempCustomer' ? 'Create' : 'My') + ' ' + ('Account' | r) | xlat}}</h3>
+                <h3 class="panel-title" ng-if="user.Type != 'TempCustomer'">{{'My Account' | r | xlat}}</h3>
+                <h3 class="panel-title" ng-if="user.Type == 'TempCustomer'">{{'Register' | r | xlat}}</h3>
             </div>
             <div class="panel-body">
                 <div class="col-sm-6 view-form-icon">
@@ -141,7 +142,7 @@
                                         <li>{{'Numeric (i.e. 0-9)' | xlat}}</li>
                                         <li>{{'Punctuation and other characters (e.g.,' | xlat}} !@#$%^&*()_+|~-=\`{}[]:";'<>?,./)</li>
                                     </ol>
-                                    <li>{{'** After 6 failed logon attempts, the user will be locked out for 30 minutes.' | xlat}}</li>
+                                    <li>{{'** After 6 failed login attempts, the user will be locked out for 30 minutes.' | xlat}}</li>
                                 </ul>
                             </ul>
                         </ul>
@@ -158,7 +159,7 @@
                 </div>
             </div>
             <div class="panel-footer text-center">
-                <input class="btn btn-primary pull-right" type="submit" ng-disabled="user_form.$invalid" id="451_btn_user" value="{{(user.Type == 'TempCustomer' ? 'Create Account' : 'Save') | xlat}}" />
+                <input class="btn btn-primary pull-right" type="submit" ng-disabled="user_form.$invalid" id="451_btn_user" value="{{(user.Type == 'TempCustomer' ? 'Register' : 'Save') | xlat}}" />
                 <span class="alert alert-success" ng-show="actionMessage" ng-bind-html="actionMessage | r | xlat"></span>
             </div>
         </div>
