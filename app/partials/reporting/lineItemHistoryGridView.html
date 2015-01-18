@@ -1,18 +1,24 @@
 <div class="panel-order-history" ng-repeat="item in order.LineItems">
-    <div class="col-sm-6">
-        <h3 class="text-primary">
-            {{item.ProductIDText}}
-        </h3>
-        <span>{{item.Product.Name}}</span>
-        <ul ng-show="item.Specs | filter:{'CanSetForLineItem':true}.length > 0">
-            <li class="text-center" ng-repeat="spec in item.Specs | onproperty:{Property: 'CanSetForLineItem', Value: true} ">
-                <span class="text-info">{{spec.Name}}</span>
-                <span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span>
-                <span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
-            </li>
-        </ul>
+    <div class="col-sm-6 pull-left">
+        <div class="row">
+            <h5 class="text-primary">
+                {{item.ProductIDText}}
+            </h5>
+        </div>
+        <div class="row">
+            <span>{{item.Product.Name}}</span>
+        </div>
+        <div class="row">
+            <ul ng-show="item.Specs | filter:{'CanSetForLineItem':true}.length > 0">
+                <li class="text-center" ng-repeat="spec in item.Specs | onproperty:{Property: 'CanSetForLineItem', Value: true} ">
+                    <span class="text-info">{{spec.Name}}</span>
+                    <span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span>
+                    <span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
+                </li>
+            </ul>
+        </div>
      </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5 col-sm-offset-1 pull-right">
         <div class="row">
             <div ng-if="!(user.Permissions.contains('HidePricing'))" class="col-xs-12 col-sm-4">
                 <p>
@@ -34,27 +40,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6">
-                <p ng-if="item.CostCenter">
-                    <span class="text-info">{{('Item' | r) + ' ' + ('Cost Center' | r) | xlat}}</span> {{item.CostCenter}}
-                </p>
-                <p ng-if="item.ShipperName">
-                    <strong>{{('Shipper' | r) + ' ' + ('Name' | r) | xlat}}</strong><br />
-                    {{item.ShipperName}}
-                </p>
-                <address ng-show="item.ShipAddress">
-                    <strong>{{'Ship to' | r | xlat}}</strong><br>
-                    {{item.ShipAddress.Street1}}<br>
-                    {{item.ShipAddress.Street2}}<br ng-show="item.ShipAddress.Street2">
-                    {{item.ShipAddress.City}}, {{item.ShipAddress.State}} {{item.ShipAddress.Zip}}
-                </address>
-            </div>
-            <div class="col-xs-6">
-                <p ng-if="item.ShipAccount">
-                    <strong>{{('Shipper' | r) + ' ' + ('Account' | r) | xlat}}</strong><br />
-                    {{item.ShipAccount}}
-                </p>
-            </div>
+            <p ng-if="item.CostCenter">
+                <span class="text-info">{{('Item' | r) + ' ' + ('Cost Center' | r) | xlat}}</span> {{item.CostCenter}}
+            </p>
+        </div>
+        <div class="row small">
+            <p ng-if="item.ShipperName">
+                <span class="text-info">{{('Shipper' | r) + ' ' + ('Name' | r) | xlat}}</span><br />
+                {{item.ShipperName}}
+            </p>
+        </div>
+        <div class="row">
+            <address ng-show="item.ShipAddress">
+                <strong>{{'Ship to' | r | xlat}}</strong><br>
+                {{item.ShipAddress.Street1}}<br>
+                {{item.ShipAddress.Street2}}<br ng-show="item.ShipAddress.Street2">
+                {{item.ShipAddress.City}}, {{item.ShipAddress.State}} {{item.ShipAddress.Zip}}
+            </address>
+        </div>
+        <div class="row">
+            <p ng-if="item.ShipAccount">
+                <strong>{{('Shipper' | r) + ' ' + ('Account' | r) | xlat}}</strong><br />
+                {{item.ShipAccount}}
+            </p>
         </div>
     </div>
 </div>
