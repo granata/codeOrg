@@ -127,7 +127,7 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
             }
         }
 
-        if (scope.LineItem.Specs && scope.LineItem.Product.StaticSpecGroups) {
+        /*if (scope.LineItem.Specs && scope.LineItem.Product.StaticSpecGroups) {
 
             if (scope.LineItem.Specs.Color) {
 
@@ -152,7 +152,7 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 
                 scope.imageLoaded = true;
             }
-        }
+        }*/
 
         //console.dir(scope.LineItem.images);
         //trigger the click for the first image (gives the large image)
