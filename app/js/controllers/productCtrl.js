@@ -18,8 +18,16 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 		})
 	};
 	function setDefaultQty(lineitem) {
-		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0)
-			$scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
+		/*if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0)
+			$scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;*/
+        /*PW-14299 PDT: default qty input to 1*/
+        if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity !== 0) {
+            $scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
+        }
+        else if(lineitem.PriceSchedule.RestrictedQuantity === false) {
+            $scope.LineItem.Quantity = 1;
+        }
+        /*PW-14299 PDT: default qty input to 1*/
 	}
 	function init(searchTerm, callback) {
 		ProductDisplayService.getProductAndVariant($routeParams.productInteropID, $routeParams.variantInteropID, function (data) {
