@@ -5,11 +5,11 @@
     </p>
     <!--custom-->
     <p ng-if="order.OrderFields[0].Value">
-        <span class="text-info" ng-repeat="Name in order.OrderFields | filter:{Name: 'Date needed by'}">
+        <span class="text-info">
              {{('Date' | r) + ' ' + ('Needed' | r) | xlat}}
         </span>
-        <span class="pull-right" ng-repeat="Value in order.OrderFields | filter:{Name: 'Date needed by'}">
-            {{order.OrderFields[0].Value | date:user.Culture.DateFormat.short}}
+        <span class="pull-right">
+            {{order.OrderFields[0].Value | limitTo: 10}}
         </span>
     </p>
     <!--custom-->
