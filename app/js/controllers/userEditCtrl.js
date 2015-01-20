@@ -58,7 +58,8 @@ function ($scope, $location, $sce, User) {
     };
 	$scope.loginExisting = function(){
 		User.login({Username: $scope.loginasuser.Username, Password:  $scope.loginasuser.Password, ID: $scope.user.ID, Type: $scope.user.Type},function(u){
-			$location.path("/catalog");
+			/*PW-14290 User/Admin - Force login of user flow doesn't redirect to checkout*/
+            $location.path("/checkout");
 
 		}, function(err){
 			$scope.loginAsExistingError = err.Message;

@@ -82,4 +82,22 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
                 component.types[0] == 'postal_code'                 ? ($scope.address.Zip = component.short_name)       : '';
         });
     }
+
+    /*PW-14298 Staff Group: Prepopulate to corp address / user First & Last */
+    if($scope.address.IsBilling){
+        angular.forEach($scope.user.Groups, function(g) {
+            if(g.Name === "Staff"){
+             $scope.address.FirstName = $scope.user.FirstName;
+             $scope.address.LastName = $scope.user.LastName;
+             $scope.address.Street1 = "1301 5th Ave";
+             $scope.address.Street2 = "Suite 1225";
+             $scope.address.City = "Seattle";
+             $scope.address.State = "WA";
+             $scope.address.Zip = "98101";
+             $scope.address.Phone = "504-975-9457";
+             }
+         });
+      }
+    /*PW-14298 Staff Group: Prepopulate to corp address / user First & Last */
+
 }]);
