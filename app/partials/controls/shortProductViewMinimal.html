@@ -23,9 +23,9 @@
                     {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
                 </p>
 
-                <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
+                <small ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
                     {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
-                </p>
+                </small>
                 <span class="backorder" ng-show="LineItem.Product.QuantityAvailable <= 0 && LineItem.Product.AllowExceedInventory">On Backorder</span>
             </div>
             <br/>
