@@ -96,14 +96,14 @@
                             </li>-->
                             <li class="dropdown admin-user visible-sm visible-md visible-lg" ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
                                 <a id="451qa_acct_link2" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span>{{'Account' | r}}</span>
+                                    <span>{{'My Account' | r}}</span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li ng-show="user.Type=='TempCustomer'">
                                         <a class="admin" href="admin">
                                             <i class="fa fa-sign-in text-info"></i>
-                                            <span>{{'Register / Log In' | r}}</span>
+                                            <span>{{'Sign in / Register' | r}}</span>
                                         </a>
                                     </li>
 
@@ -152,7 +152,7 @@
                                     <li ng-show="user.Type!='TempCustomer'" class="logout">
                                         <a href="#"  class="451_btn_logout" ng-click="Logout()">
                                             <i class="fa fa-sign-out text-info"></i>
-                                            <span>{{'Log Out' | r}}</span>
+                                            <span>{{'Sign out' | r}}</span>
                                         </a>
                                     </li>
                                     <li ng-if="AppConst.debug">

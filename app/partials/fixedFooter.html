@@ -5,10 +5,12 @@
                 <li><a target="_blank" href="//code.org/">Code.org</a></li>
                 <li class="dim">|</li>
                 <li><a href="catalog">Products</a></li>
-                <li ng-show="user.Type !='TempCustomer'" class="dim">|</li>
-                <li ng-show="user.Type !='TempCustomer'"><a href="admin">My Account</a></li>
                 <li class="dim">|</li>
                 <li><a href="contactus">Store Support</a></li>
+                <li ng-show="user.Type =='TempCustomer'" class="dim">|</li>
+                <li ng-show="user.Type =='TempCustomer'"><a href="admin">Sign In / Register</a></li>
+                <li ng-show="user.Type !='TempCustomer'" class="dim">|</li>
+                <li ng-show="user.Type !='TempCustomer'"><a href="admin">My Account</a></li>
             </ul>
         </div>
         <div class="row col-xs-12">

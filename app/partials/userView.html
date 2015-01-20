@@ -7,7 +7,7 @@
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="login_existing" ng-submit="loginExisting()" ng-if="user.Type == 'TempCustomer'">
 		<div class="panel panel-default" id="user_form">
 			<div class="panel-heading">
-				<h3 class="panel-title">{{'Login' | r | xlat}}</h3>
+				<h3 class="panel-title">{{'Sign In' | r | xlat}}</h3>
 			</div>
 			<div class="panel-body">
                 <div class="col-md-6 col-md-offset-3">
@@ -16,7 +16,7 @@
                 </div>
 			</div>
 			<div class="panel-footer">
-				<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_existing.$invalid" id="451_btn_login_existing" value="{{'Login' | r | xlat}}" />
+				<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_existing.$invalid" id="451_btn_login_existing" value="{{'Sign In' | r | xlat}}" />
 				<inlineerror ng-show="loginAsExistingError" title="{{loginAsExistingError}}" />
 			</div>
 		</div>
