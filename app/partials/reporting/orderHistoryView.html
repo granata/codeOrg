@@ -64,6 +64,9 @@
                             </span>
                         </div>
                     </div>
+                    <div class="view-response-message alert-success text-center" alert-show="actionMessage">
+                        <p>{{actionMessage | r | xlat}}</p>
+                    </div>
                 </div>
                 <div class="panel-footer" ng-if="order.FromUserID == user.ID && order.Status == 'Unsubmitted'">
                     <loadingindicator ng-show="displayLoadingIndicator" />
