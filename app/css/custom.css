@@ -115,7 +115,7 @@ http://www.typography.com/fonts/gotham/
     font-size: 18px;
 }
 
-.panel-product-list ul li.inline .backorder {
+.panel-product-list ul li.inline .backorder span {
     background-color:#7665a0;
     color:#fff;
     font-style: italic;
