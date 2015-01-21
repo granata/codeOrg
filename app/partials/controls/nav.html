@@ -110,7 +110,9 @@
                                     <li ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewSelfAdmin')"
                                         id="451qa_user_link" class="admin">
                                         <a href="admin">
-                                            {{'My Account' | r}}
+                                            <i class="fa fa-cog hidden-xs"></i>
+                                            <span class="hidden-xs">{{'User Information' | r}}</span>
+                                        </a>
                                         </a>
                                     </li>
                                     <!--Permissions are set to create billing and shipping address so leaving this out so hides when Temp Customer works correctly --
@@ -118,29 +120,32 @@
                                     -->
                                     <li id="451qa_addy_link" class="addresses" ng-show="user.Type!='TempCustomer'">
                                         <a href="addresses">
-                                            {{'Addresses' | r}}
+                                            <i class="fa fa-building hidden-xs"></i>
+                                            <span class="hidden-xs">{{'Addresses' | r}}</span>
                                         </a>
                                     </li>
                                     <li id="451qa_mesg_link" ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewMessaging')" class="messages">
                                         <a href="message">
-                                            {{'Messages' | r}}
+                                            <i class="fa fa-envelope-o hidden-xs"></i>
+                                            <span class="hidden-xs">{{'Messages' | r}}</span>
                                         </a>
                                     </li>
                                     <li class="order" ng-show="user.Type!='TempCustomer'">
                                         <a id="451qa_order_link" href="order">
-                                            <i class="fa fa-clipboard hidden-sm hidden-md hidden-lg"></i>
+                                            <i class="fa fa-clipboard hidden-xs"></i>
                                             <span class="hidden-xs">{{'Order History' | r}}</span>
                                         </a>
                                     </li>
                                     <li class="order" ng-if="user.Permissions.contains('AdvancedReporting')" ng-show="user.Type!='TempCustomer'">
                                         <a id="451qa_order_link" href="reports">
-                                            <i class="fa fa-clipboard hidden-sm hidden-md hidden-lg"></i>
+                                            <i class="fa fa-clipboard hidden-xs"></i>
                                             <span class="hidden-xs">{{'Reports' | r}}</span>
                                         </a>
                                     </li>
                                     <li class="favorites hidden-xs" ng-show="user.Type!='TempCustomer'">
                                         <a id="451qa_fave_link" href="favoriteorders">
-                                            {{'Favorites' | r}}
+                                            <i class="fa fa-heart hidden-xs"></i>
+                                            <span class="hidden-xs">{{'Favorites' | r}}</span>
                                         </a>
                                     </li>
                                     <!--<li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
