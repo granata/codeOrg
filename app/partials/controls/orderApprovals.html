@@ -5,7 +5,7 @@
             <span class="header">{{'Approval' | r}} {{'Rules' | r}}</span>
         </h3>
     </div>
-    <div class="panel-body collapse" collapse="checkOutSection != 'approval'" ng-disabled="$cart_billing.$invalid">
+    <div class="panel-body" ng-disabled="$cart_billing.$invalid">
         <approvalrulelist order="currentOrder" />
         <div ng-if="user.Permissions.contains('EditApprovalOrder') && currentOrder.Status == 'AwaitingApproval'">
             <textarea class="form-control" ng-model="currentOrder.ApprovalComment" ng-attr-placeholder="{{'Approval' | r}} {{'Comments' | r}}"></textarea>

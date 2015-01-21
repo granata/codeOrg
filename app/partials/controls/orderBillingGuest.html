@@ -9,8 +9,8 @@
             <i class="col-xs-1 pull-left" ng-class="{'fa fa-warning': cart_billing.$invalid, 'fa fa-check-circle': !cart_billing.$invalid }"></i>
             <span class="text-center">{{'Billing' | r | xlat}}</span>
             <span class="col-xs-1 pull-right">
-                <!--<btn class="pull-right btn btn-sm btn-primary" ng-show="checkOutSection == 'approval' && !cart_billing.$invalid" ng-click="checkOutSection = 'billing'">edit</btn>
-                <btn class="pull-right btn btn-sm btn-primary" ng-show="checkOutSection == 'billing' && !cart_billing.$invalid" ng-click="checkOutSection = 'approval'">close</btn>-->
+               <btn class="pull-right btn btn-sm btn-primary" ng-show="checkOutSection == 'approval' && !cart_billing.$invalid" ng-click="checkOutSection = 'billing'">edit</btn>
+                <btn class="pull-right btn btn-sm btn-primary" ng-show="user.Groups[0].Name == 'Affiliates' && checkOutSection == 'billing' && !cart_billing.$invalid" ng-click="checkOutSection = 'approval'">close</btn>
             </span>
         </h3>
     </div>
