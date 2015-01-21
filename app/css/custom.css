@@ -799,7 +799,7 @@ float:left;
 
 .galleryThumbs {
     width:100%;
-    margin:0px auto;
+    margin:0 auto;
     position: relative;
     text-align: center;
 }
@@ -811,7 +811,7 @@ float:left;
 }
 
 .galleryThumbs li:first-child {
-    padding-left:0px;
+    padding-left:0;
 }
 
 .galleryThumbs .img-thumbnail {
@@ -830,6 +830,10 @@ float:left;
     display:block;
 }
 
+.galleryImages a.no-click {
+    cursor:none;
+    pointer-events: none;
+}
 
 .galleryImages .product-image-large {
     display:none;
@@ -866,7 +870,7 @@ float:left;
 
 .lightbox-image-container {
     position: relative;
-    text-align: center; /* center the image */
+    text-align: center;
 }
 
 /* the caption overlays the top left corner of the image */
