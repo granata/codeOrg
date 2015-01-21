@@ -52,7 +52,7 @@ function ($location, $route, $scope, $451, User) {
 
         /* cartCount*/
         var newQty = 0;
-        if (!order || (order.Status !== 'Unsubmitted' && order.Status !== 'AwaitingApproval')) {
+        if (!order || (order.Status !== 'Unsubmitted' && order.Status == 'AwaitingApproval')) {
             $scope.TotalQty = null;
         }
         else {
