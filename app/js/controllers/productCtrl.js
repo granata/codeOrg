@@ -124,6 +124,9 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 			save($scope.currentOrder,
 				function(o){
 					$scope.user.CurrentOrderID = o.ID;
+                    /*PW-14302 Order/Cart - Shopping cart icon persists after order */
+                    $scope.currentOrder = o;
+                    /*PW-14302 Order/Cart - Shopping cart icon persists after order */
 					User.save($scope.user, function(){
 						$scope.addToOrderIndicator = false;
                         $scope.actionMessage = quantity + " " + (+(quantity) > 1 ? 'items' : 'item') + " added to your cart.";
