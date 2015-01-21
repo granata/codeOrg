@@ -52,13 +52,16 @@ function ($location, $route, $scope, $451, User) {
 
         /* cartCount*/
         var newQty = 0;
-        if (!order) return newQty;
-        angular.forEach(order.LineItems, function(item){
-            if(item.Quantity != 0){
-                newQty += +(item.Quantity);
-            }
-        });
-        $scope.TotalQty = newQty;
-
+        if (!order || (order.Status !== 'Unsubmitted' && order.Status !== 'AwaitingApproval')) {
+            $scope.TotalQty = null;
+        }
+        else {
+            angular.forEach(order.LineItems, function(item){
+                if(item.Quantity != 0){
+                    newQty += +(item.Quantity);
+                }
+            });
+            $scope.TotalQty = newQty;
+        }
 	});
 }]);
