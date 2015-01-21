@@ -124,6 +124,9 @@ four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$loca
 			save($scope.currentOrder,
 				function(o){
 					$scope.user.CurrentOrderID = o.ID;
+                    /* PW-14303 Product/Cart - Extra items are getting added to cart sometimes */
+                    $scope.currentOrder = o;
+                    /* PW-14303 Product/Cart - Extra items are getting added to cart sometimes */
 					User.save($scope.user, function(){
 						$scope.addToOrderIndicator = false;
                         $scope.actionMessage = quantity + " " + (+(quantity) > 1 ? 'items' : 'item') + " added to your cart.";
