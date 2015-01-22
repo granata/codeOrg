@@ -78,3 +78,16 @@ four51.app.filter('paginate', function() {
 		return input.slice(start);
 	}
 });
+
+four51.app.filter('getfieldbyname', function() {
+    return function(fields, name) {
+        var result = null;
+
+        angular.forEach(fields, function(field) {
+            if (field.Name == name) {
+                result = field;
+            }
+        });
+        return result;
+    }
+});

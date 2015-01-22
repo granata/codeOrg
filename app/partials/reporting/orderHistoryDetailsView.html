@@ -4,12 +4,12 @@
         <span class="pull-right">{{order.DateSubmitted | date:user.Culture.DateFormat.short}}</span>
     </p>
     <!--custom-->
-    <p ng-if="order.OrderFields[0].Value">
+    <p ng-if="order.DateNeeded.Value">
         <span class="text-info">
              {{('Date' | r) + ' ' + ('Needed' | r) | xlat}}
         </span>
         <span class="pull-right">
-            {{order.OrderFields[0].Value | limitTo: 10}}
+            {{order.DateNeeded.Value | limitTo: 10}}
         </span>
     </p>
     <!--custom-->
@@ -26,12 +26,12 @@
         <span class="pull-right">{{order.FromUserFirstName + ' ' + order.FromUserLastName}}</span>
     </p>
     <!--custom-->
-    <p ng-if="order.OrderFields[2].Value">
-        <span class="text-info" ng-repeat="Name in order.OrderFields | filter:{Name: 'Code.org Guest Email'}">
+    <p ng-if="order.GuestEmail.Value">
+        <span class="text-info">
             {{('Guest' | r) + ' ' + ('Email' | r) | xlat}}
         </span>
-        <span class="pull-right" ng-repeat="Name in order.OrderFields | filter:{Name: 'Code.org Guest Email'}">
-            {{order.OrderFields[2].Value}}</span>
+        <span class="pull-right">
+            {{order.GuestEmail.Value}}</span>
         </span>
     </p>
     <!--custom-->
@@ -47,12 +47,12 @@
         <span class="pull-right">{{(order.LineItems.length == 1) && order.LineItems[0].CostCenter || null}}</span>
     </p>
     <!--custom-->
-    <p ng-if="order.OrderFields[1].Value">
-        <span class="text-info" ng-repeat="Name in order.OrderFields | filter:{Name: 'Code.org Cost Center'}">
+    <p ng-if="order.CustomCostCenter.Value">
+        <span class="text-info">
             {{('Cost' | r) + ' ' + ('Center' | r) | xlat}}
         </span>
-        <span class="pull-right" ng-repeat="Name in order.OrderFields | filter:{Name: 'Code.org Cost Center'}">
-            {{order.OrderFields[1].Value}}</span>
+        <span class="pull-right">
+            {{order.CustomCostCenter.Value}}</span>
         </span>
     </p>
     <!--custom-->
@@ -73,7 +73,7 @@
         <span class="text-info">{{'Ship to' | r | xlat}}</span><br />
         <div>
             <!--custom-->
-            <div>{{order.ShipAddress.AddressName}}</div>
+            <!--<div">{{order.ShipAddress.AddressName}}</div>-->
             <div>{{order.ShipAddress.CompanyName}}</div>
             <!--custom-->
             <span ng-show="order.LineItems[0].ShipFirstName || order.LineItems[0].ShipLastName">{{order.LineItems[0].ShipFirstName}} {{order.LineItems[0].ShipLastName}}</span>
@@ -88,7 +88,7 @@
         <span class="text-info">{{'Bill to' | r | xlat}}</span><br />
         <div>
         <!--custom-->
-        <div>{{order.BillAddress.AddressName}}</div>
+        <!--<div>{{order.BillAddress.AddressName}}</div>-->
         <div>{{order.BillAddress.CompanyName}}</div>
         <!--custom-->
         <span ng-show="order.BillFirstName || order.BillLastName">{{order.BillFirstName}} {{order.BillLastName}}</span>

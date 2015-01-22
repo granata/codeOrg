@@ -1,11 +1,17 @@
-four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', 'Order', 'FavoriteOrder', 'Address', 'User',
-	function ($scope, $location, $routeParams, Order, FavoriteOrder, Address, User) {
+four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', '$filter', 'Order', 'FavoriteOrder', 'Address', 'User',
+	function ($scope, $location, $routeParams, $filter, Order, FavoriteOrder, Address, User) {
 		$scope.loadingIndicator = true;
 
 
 		Order.get($routeParams.id, function(data){
 			$scope.loadingIndicator = false;
 			$scope.order = data;
+
+            $scope.order.DateNeeded = $filter('getfieldbyname')($scope.order.OrderFields, 'Date needed by');
+            $scope.order.GuestEmail = $filter('getfieldbyname')($scope.order.OrderFields, 'Code.org Guest Email');
+            $scope.order.CustomCostCenter = $filter('getfieldbyname')($scope.order.OrderFields, 'Code.org Cost Center');
+
+
 			$scope.order.recent = ((Date.parse(data.DateSubmitted) + 300000) - new Date().getTime()) > 0;
 			$scope.hasSpecsOnAnyLineItem = false;
 			for(var i = 0; i < data.LineItems.length ; i++) {
