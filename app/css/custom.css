@@ -34,6 +34,24 @@ html {
     margin-bottom: 120px;
 }
 
+/*for Safari*/
+.alert-success {
+    left: 5px;
+    max-width: 99%;
+    position: relative;
+    top: 20px;
+}
+
+.form-control {
+    height:40px;
+}
+
+.view-form-select select option {
+    padding-left: 30px;
+}
+/*for Safari*/
+
+
 .fixed-footer {
     position:absolute;
     bottom:0;
@@ -871,6 +889,11 @@ float:left;
 .lightbox-image-container {
     position: relative;
     text-align: center;
+}
+
+.lightbox-image-container img {
+    min-width:350px;
+    min-height:350px;
 }
 
 /* the caption overlays the top left corner of the image */
