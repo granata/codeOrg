@@ -11,7 +11,8 @@
             <div class="col-sm-12 view-form-icon">
                 <div>
                     <label class="required">{{('Address' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="addressname" class="form-control" type="text" ng-model="address.AddressName" placeholder="{{('Address' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" required />
+                    <input name="addressname" class="form-control" type="text" ng-model="address.AddressName" placeholder="{{('Address' | r) + ' ' + ('Name' | r) | xlat}}"
+                           autocomplete="off" required />
                     <i class="fa fa-edit"></i>
                 </div>
                 <div class="col-sm-6">
@@ -61,7 +62,7 @@
                     <input name="city" class="form-control" type="text" ng-model="address.City" placeholder="{{'City' | r | xlat}}" autocomplete="off" required />
                     <i class="fa fa-map-marker"></i>
                 </div>
-                <div class="col-sm-6" ng-show="!hasStates()">
+                <div class="col-sm-6 view-form-icon" ng-show="!hasStates()">
                     <label ng-class="{required: !hasStates}">{{'State' | r | xlat}}</label>
                     <input ng-show="!hasStates()" class="form-control" type="text" ng-model="address.State" placeholder="{{'State' | r | xlat}}" autocomplete="off" ng-required="!hasStates()" />
                     <i class="fa fa-map-marker"></i>
@@ -70,7 +71,7 @@
                     <label ng-class="{required: hasStates}">{{'State' | r | xlat}}</label>
                     <select ng-show="hasStates()" class="form-control" ng-options="state.value as state.label for state in states | filter:country" ng-model="address.State" placeholder="{{'State' | r | xlat}}" ng-required="hasStates()">
                     </select>
-                    <i class="fa fa-map-marker"></i>
+                    <i ng-class="{'fa fa-map-marker': !address.State, '': address.State }"></i>
                 </div>
             </div>
         </div>
@@ -84,7 +85,7 @@
                 <div class="col-sm-6" ng-class="{'view-form-select': !address.Country, '': address.Country }">
                     <label class="required">{{'Country' | r | xlat}}</label>
                     <select name="country" class="form-control" ng-options="country.value as country.label for country in countries" ng-model="address.Country" placeholder="{{'Country' | r | xlat}}" required />
-                    <i class="fa fa-globe"></i>
+                    <i ng-class="{'fa fa-globe': !address.Country, '': address.Country }"></i>
                 </div>
             </div>
         </div>

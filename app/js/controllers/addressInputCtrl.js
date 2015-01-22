@@ -2,6 +2,9 @@ four51.app.controller('AddressInputCtrl', ['$scope', '$rootScope', '$location', 
 function ($scope, $rootScope, $location, User, Address, Resources) {
     $scope.save = function() {
 	    $scope.objectExists = false;
+        if ($scope.user.Type == 'TempCustomer') {
+            this.address.AddressName = this.address.Street1;
+        }
         Address.save(this.address,
 	        function(address) {
                 $rootScope.$broadcast('event:AddressSaved', address);
@@ -44,6 +47,7 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
     var tempShipping = null;
     var tempBilling = null;
 
+
     $scope.$watch('addressobj', function(newval, oldval) {
         if (newval != oldval){
             $scope.address.IsShipping   ? (tempShipping = true) : '';
@@ -59,7 +63,7 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
     }, true);
 
     $scope.makeAddress = function(addressobj){
-        $scope.address.AddressName = addressobj.name;
+
         addressobj.formatted_phone_number ? $scope.address.Phone = addressobj.formatted_phone_number : '';
             angular.forEach(addressobj.address_components, function(component){
                 component.types[0] == 'street_number'   ? (streetNum = component.long_name)     : null;

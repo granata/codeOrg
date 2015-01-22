@@ -210,17 +210,6 @@ four51.app.directive('ordershippingguest', ['$rootScope', 'Order', 'Shipper', 'A
             };
 
 
-            /*$scope.$watch('currentOrder.LineItems', function(newval) {
-             var newQty = 0;
-             if (!$scope.currentOrder) return newQty;
-             angular.forEach($scope.currentOrder.LineItems, function(item){
-             if(item.Quantity != 0){
-             newQty += +(item.Quantity);
-             }
-             });
-             $scope.currentOrder.totalQty = newQty;
-             }, true);*/
-
             $scope.$on('event:AddressCancel', function(event) {
                 $scope.shipaddressform = false;
             });
