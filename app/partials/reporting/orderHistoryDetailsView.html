@@ -35,6 +35,16 @@
         </span>
     </p>
     <!--custom-->
+    <!--custom-->
+    <p ng-if="order.ShopifyEmail.Value">
+        <span class="text-info">
+            {{('Shopify' | r) + ' ' + ('Email' | r) | xlat}}
+        </span>
+        <span class="pull-right">
+            {{order.ShopifyEmail.Value}}</span>
+        </span>
+    </p>
+    <!--custom-->
     <p>
         <span class="text-info">{{('Payment' | r) + ' ' + ('Method' | r) | xlat}}</span>
         <span class="pull-right">{{order.PaymentMethodText | r | xlat}}

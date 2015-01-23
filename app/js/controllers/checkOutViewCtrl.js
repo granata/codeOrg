@@ -13,6 +13,13 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
         $location.path('catalog');
     }
 
+    /*custom order fields
+    $scope.currentOrder.DateNeeded = $filter('getfieldbyname')($scope.currentOrder.OrderFields, 'Date needed by');
+    $scope.currentOrder.GuestEmail = $filter('getfieldbyname')($scope.currentOrder.OrderFields, 'Code.org Guest Email');
+    $scope.currentOrder.ShopifyEmail = $filter('getfieldbyname')($scope.currentOrder.OrderFields, 'Shopify Email');
+    $scope.currentOrder.CustomCostCenter = $filter('getfieldbyname')($scope.currentOrder.OrderFields, 'Code.org Cost Center');
+    custom order fields*/
+
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
 	//$scope.checkOutSection = $scope.hasOrderConfig ? 'order' : 'shipping';
 

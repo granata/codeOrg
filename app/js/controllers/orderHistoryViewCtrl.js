@@ -9,6 +9,7 @@ four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', '
 
             $scope.order.DateNeeded = $filter('getfieldbyname')($scope.order.OrderFields, 'Date needed by');
             $scope.order.GuestEmail = $filter('getfieldbyname')($scope.order.OrderFields, 'Code.org Guest Email');
+            $scope.order.ShopifyEmail = $filter('getfieldbyname')($scope.order.OrderFields, 'Shopify Email');
             $scope.order.CustomCostCenter = $filter('getfieldbyname')($scope.order.OrderFields, 'Code.org Cost Center');
 
 

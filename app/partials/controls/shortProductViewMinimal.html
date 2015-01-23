@@ -11,7 +11,9 @@
     </div>
     <div class="col-xs-12 text-left">
         <div class="panel-body">
-            <h3 class="text-center">{{LineItem.Product.Name}}</h3>
+            <h3 class="text-center">{{LineItem.Product.Name}}<br />
+            <small class="text-info">{{LineItem.Product.ExternalID}}</small>
+            </h3>
             <div>
                 <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
                 <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
@@ -26,9 +28,9 @@
                 <small ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
                     {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
                 </small>
-                <div class="backorder">
-                    <span ng-show="LineItem.Product.QuantityAvailable <= 0 && LineItem.Product.AllowExceedInventory">On Backorder</span>
-                </div>
+                <!--<div class="backorder"> need to account for variant inventory
+                    <span ng-show="LineItem.Product.QuantityAvailable <= 0 && LineItem.Product.AllowExceedInventory || LineItem.Variant.">On Backorder</span>
+                </div>-->
             </div>
             <br/>
             <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>
