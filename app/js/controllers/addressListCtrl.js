@@ -1,4 +1,3 @@
-
 four51.app.controller('AddressListCtrl', ['$scope', '$location', '$451', 'AddressList',
 function ($scope, $location, $451, AddressList) {
 	$scope.settings = {
@@ -37,8 +36,7 @@ function ($scope, $location, $451, AddressList) {
         });
     };
 
-	$scope.search = function(e) {
-		e.preventDefault();
+	$scope.search = function() {
 		Query();
 	};
 }]);
