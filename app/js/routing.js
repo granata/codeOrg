@@ -14,6 +14,8 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		when('/orderdetails/:orderid', {templateUrl: 'partials/orderDetails.html', controller: 'OrderDetailsCtrl'}).
         when('/catalog', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
         when('/catalog/:categoryInteropID', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
+		when('/kit/:id', {templateUrl: 'partials/kitView.html', controller: 'KitCtrl'}).
+		when('/kit/:id/:lineitemid', {templateUrl: 'partials/kitView.html', controller: 'KitCtrl'}).
         when('/product/:productInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
         when('/product/:productInteropID/:variantInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
 		when('/product/:productInteropID/:variantInteropID/edit', {templateUrl: concatSpecFormView, controller: 'SpecFormCtrl'}).
@@ -30,18 +32,18 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
         when('/cart', { templateUrl: 'partials/cartView.html', controller: 'CartViewCtrl'}).
         when('/checkout', { templateUrl: 'partials/checkOutView.html', controller: 'CheckOutViewCtrl' }).
 		when('/checkout/:id', { templateUrl: 'partials/checkOutView.html', controller: 'CheckOutViewCtrl' }).
-        /*guestcheckout*/
-        when('/checkoutGuest', { templateUrl: 'partials/checkOutViewGuest.html', controller: 'CheckOutViewCtrl' }).
-        /*guestcheckout*/
+		/*guestcheckout*/
+		when('/checkoutGuest', { templateUrl: 'partials/checkOutViewGuest.html', controller: 'CheckOutViewCtrl' }).
+		/*guestcheckout*/
 		when('/cart/:productInteropID/:lineItemIndex', { templateUrl: concatProductView, controller: 'LineItemEditCtrl'}).
 		when('/cart/:id', { templateUrl: 'partials/cartView.html', controller: 'CartViewCtrl' }).
 		when('/login', { templateUrl: 'partials/controls/login.html', controller: 'LoginCtrl' }).
 		when('/search', { templateUrl: 'partials/searchView.html', controller: 'ProductSearchCtrl' }).
         when('/search/:searchTerm', { templateUrl: 'partials/searchView.html', controller: 'ProductSearchCtrl' }).
         when('/security', { templateUrl: 'partials/Security/security.html', controller: 'SecurityCtrl' }).
-        when('/conditions', { templateUrl: 'partials/Conditions/conditions.html', controller: 'ConditionsCtrl' }). /*SPA-13874*/
+        when('/conditions', { templateUrl: 'partials/Conditions/conditions.html', controller: 'ConditionsCtrl' }).
 		when('/reports', { templateUrl: 'partials/reportsView.html', controller: 'ReportsCtrl' }).
 		when('/report/:id', { templateUrl: 'partials/Reporting/reportView.html', controller: 'ReportCtrl' }).
-		when('/contactus', { templateUrl: 'partials/Messages/contactus.html' }). /*SPA-13874*/
+		when('/contactus', { templateUrl: 'partials/Messages/contactus.html' }).
 		otherwise({redirectTo: '/catalog'});
 }]);
